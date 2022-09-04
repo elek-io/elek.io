@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import { Button } from 'ui'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import { Button } from 'ui';
 
 const Home: NextPage = () => {
   return (
@@ -85,7 +85,7 @@ const Home: NextPage = () => {
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
