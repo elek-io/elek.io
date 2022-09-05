@@ -1,6 +1,6 @@
-import { Menu } from '@headlessui/react'
+import { Menu } from '@headlessui/react';
 
-export function Dropdown({foo}: {foo: string}) {
+export function Dropdown({ foo }: { foo: string }) {
   return (
     <Menu>
       <Menu.Button>{foo}</Menu.Button>
@@ -19,5 +19,5 @@ export function Dropdown({foo}: {foo: string}) {
         </Menu.Item>
       </Menu.Items>
     </Menu>
-  )
+  );
 }
