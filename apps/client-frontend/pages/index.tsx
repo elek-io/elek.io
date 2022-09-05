@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import { Button } from 'ui';
+import { Dropdown } from 'ui';
 
 const Home: NextPage = () => {
   return (
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
         </h1>
 
         <div>
-          <Button />
+          <Dropdown foo="bar"></Dropdown>
         </div>
 
         <p className="mt-3 text-2xl">
