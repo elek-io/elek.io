@@ -1,0 +1,36 @@
+{
+  "name": "core",
+  "version": "0.0.0",
+  "description": "Handles core functionality of elek.io projects like file IO, version control, parsing and building.",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "1.0.0-rc.12",
+    "dugite": "^2.0.0",
+    "file-type": "^18.0.0",
+    "fs-extra": "^10.1.0",
+    "is-svg": "^4.3.2",
+    "lodash": "^4.17.21",
+    "p-queue": "^7.3.0",
+    "pino": "^8.5.0",
+    "pino-pretty": "^9.1.0",
+    "rxjs": "^7.5.6",
+    "semver": "^7.3.7",
+    "slugify": "^1.6.5",
+    "typescript": "^4.8.3",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/lodash": "^4.14.185",
+    "@types/semver": "^7.3.12",
+    "@types/uuid": "^8.3.4"
+  }
+}
