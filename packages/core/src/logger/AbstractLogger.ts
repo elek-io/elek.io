@@ -30,16 +30,16 @@ export default abstract class AbstractLogger {
       case Environment.PRODUCTION:
         // Use Pino without multistream for enhanced performance
         // and only log to file while in production
-        this.logger = Pino.pino({ level }, destination);
+        this.logger = Pino.default({ level }, destination);
 
         // this.registerEmergencyFlush();
         break;
       default:
         // Use Pino with multistream to show pretty console output
         // while developing and debugging
-        this.logger = Pino.pino({ level }, Pino.multistream([
+        this.logger = Pino.default({ level }, Pino.multistream([
           {stream: destination},
-          {stream: PinoPretty.PinoPretty()}
+          {stream: PinoPretty.default()}
         ]));
 
         // this.registerEmergencyFlush();

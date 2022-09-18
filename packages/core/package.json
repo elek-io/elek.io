@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Handles core functionality of elek.io projects like file IO, version control, parsing and building.",
   "type": "module",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
@@ -18,7 +18,7 @@
     "fs-extra": "^10.1.0",
     "is-svg": "^4.3.2",
     "lodash": "^4.17.21",
-    "p-queue": "^7.3.0",
+    "p-queue": "6.x.x",
     "pino": "^8.5.0",
     "pino-pretty": "^9.1.0",
     "rxjs": "^7.5.6",

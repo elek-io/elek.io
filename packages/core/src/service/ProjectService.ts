@@ -24,7 +24,10 @@ import LogService from './LogService.js';
 import Project from '../model/Project.js';
 import AssetService from './AssetService.js';
 import CollectionService from './CollectionService.js';
-import { version as currentCoreVersion } from '../../package.json';
+// FIXME: When importing the current version from package.json
+// the folder structure in "dist" folder includes the "src" folder.
+// import { version as currentCoreVersion } from '../../package.json';
+const currentCoreVersion = "1";
 import SnapshotService from './SnapshotService.js';
 import { ProjectUpgradeImport } from '../type/project.js';
 import ProjectUpgradeError from '../error/ProjectUpgradeError.js';
