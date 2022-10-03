@@ -12,7 +12,10 @@ describe('Asset', async () => {
   const assetLanguage = 'en';
 
   it('create', async () => {
-    const project = await core.projects.create('Project #1', 'The first project')
+    const project = await core.projects.create(
+      'Project #1',
+      'The first project'
+    );
     const asset = await core.assets.create(
       assetFilePath,
       project.id,
@@ -24,12 +27,28 @@ describe('Asset', async () => {
     expect(asset.name).to.equal(assetName);
     expect(asset.description).to.equal(assetDescription);
 
-    expect(await Fs.pathExists(util.pathTo.assetConfig(project.id, asset.id, asset.language))).to.be.true;
-    expect(await Fs.pathExists(util.pathTo.assetFile(project.id, asset.id, asset.language, asset.extension))).to.be.true;
+    expect(
+      await Fs.pathExists(
+        util.pathTo.assetConfig(project.id, asset.id, asset.language)
+      )
+    ).to.be.true;
+    expect(
+      await Fs.pathExists(
+        util.pathTo.assetFile(
+          project.id,
+          asset.id,
+          asset.language,
+          asset.extension
+        )
+      )
+    ).to.be.true;
   });
 
   it('read', async () => {
-    const project = await core.projects.create('Project #1', 'The first project')
+    const project = await core.projects.create(
+      'Project #1',
+      'The first project'
+    );
     const asset = await core.assets.create(
       assetFilePath,
       project.id,
@@ -38,14 +57,21 @@ describe('Asset', async () => {
       assetDescription
     );
 
-    const readAsset = await core.assets.read(project.id, asset.id, asset.language);
+    const readAsset = await core.assets.read(
+      project.id,
+      asset.id,
+      asset.language
+    );
 
     expect(readAsset.name).to.equal(assetName);
     expect(readAsset.description).to.equal(assetDescription);
-  })
+  });
 
   it('update', async () => {
-    const project = await core.projects.create('Project #1', 'The first project')
+    const project = await core.projects.create(
+      'Project #1',
+      'The first project'
+    );
     const asset = await core.assets.create(
       assetFilePath,
       project.id,
@@ -56,17 +82,28 @@ describe('Asset', async () => {
 
     asset.description = 'Updated';
     await core.assets.update(project.id, asset);
-    const updatedAsset = await core.assets.read(project.id, asset.id, asset.language);
+    const updatedAsset = await core.assets.read(
+      project.id,
+      asset.id,
+      asset.language
+    );
     expect(updatedAsset.description).to.equal('Updated');
 
     asset.description = assetDescription;
     await core.assets.update(project.id, asset);
-    const updatedAsset2 = await core.assets.read(project.id, asset.id, asset.language);
+    const updatedAsset2 = await core.assets.read(
+      project.id,
+      asset.id,
+      asset.language
+    );
     expect(updatedAsset2.description).to.equal(assetDescription);
-  })
+  });
 
   it('delete', async () => {
-    const project = await core.projects.create('Project #1', 'The first project')
+    const project = await core.projects.create(
+      'Project #1',
+      'The first project'
+    );
     const asset = await core.assets.create(
       assetFilePath,
       project.id,
@@ -74,10 +111,28 @@ describe('Asset', async () => {
       assetName,
       assetDescription
     );
-    
-    await core.assets.delete(project.id, asset.id, asset.language, asset.extension);
 
-    expect(await Fs.pathExists(util.pathTo.assetConfig(project.id, asset.id, asset.language))).to.be.false;
-    expect(await Fs.pathExists(util.pathTo.assetFile(project.id, asset.id, asset.language, asset.extension))).to.be.false;
-  })
+    await core.assets.delete(
+      project.id,
+      asset.id,
+      asset.language,
+      asset.extension
+    );
+
+    expect(
+      await Fs.pathExists(
+        util.pathTo.assetConfig(project.id, asset.id, asset.language)
+      )
+    ).to.be.false;
+    expect(
+      await Fs.pathExists(
+        util.pathTo.assetFile(
+          project.id,
+          asset.id,
+          asset.language,
+          asset.extension
+        )
+      )
+    ).to.be.false;
+  });
 });
