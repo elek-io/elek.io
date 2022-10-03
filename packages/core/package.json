@@ -3,10 +3,16 @@
   "version": "0.0.0",
   "description": "Handles core functionality of elek.io projects like file IO, version control, parsing and building.",
   "type": "module",
-  "main": "dist/index.js",
+  "exports": "./dist/index.js",
+  "engines": {
+    "node": ">=14.16"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "rm -rf dist && tsc",
+    "test:base": "NODE_ENV=test c8 mocha --timeout 10000",
+    "test:unit": "pnpm run test:base 'test/unit/**/*.ts'",
+    "test:integration": "pnpm run test:base 'test/integration/**/*.ts'",
+    "test": "pnpm run test:unit && test:integration"
   },
   "keywords": [],
   "author": "",
@@ -28,9 +34,16 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.3",
     "@types/fs-extra": "^9.0.13",
     "@types/lodash": "^4.14.185",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "18.7.15",
     "@types/semver": "^7.3.12",
-    "@types/uuid": "^8.3.4"
+    "@types/uuid": "^8.3.4",
+    "c8": "^7.12.0",
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "ts-node": "^10.9.1"
   }
 }

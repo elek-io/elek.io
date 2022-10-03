@@ -1,3 +1,4 @@
+import pino from 'pino';
 import { GitSignature } from './git.js';
 
 /**
@@ -63,9 +64,11 @@ export interface ElekIoCoreOptions {
   };
   log: {
     /**
-     * If true, the log level will be set to 'debug' instead of the default 'info'
+     * Setting a supported log level
+     *
+     * @see https://github.com/pinojs/pino/blob/master/docs/api.md#levels
      */
-    debug: boolean;
+    level: pino.LoggerOptions['level'];
   };
 }
 

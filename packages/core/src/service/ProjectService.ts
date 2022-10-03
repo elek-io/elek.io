@@ -24,10 +24,6 @@ import LogService from './LogService.js';
 import Project from '../model/Project.js';
 import AssetService from './AssetService.js';
 import CollectionService from './CollectionService.js';
-// FIXME: When importing the current version from package.json
-// the folder structure in "dist" folder includes the "src" folder.
-// import { version as currentCoreVersion } from '../../package.json';
-const currentCoreVersion = "1";
 import SnapshotService from './SnapshotService.js';
 import { ProjectUpgradeImport } from '../type/project.js';
 import ProjectUpgradeError from '../error/ProjectUpgradeError.js';
@@ -191,6 +187,13 @@ export default class ProjectService
     );
 
     const project = await this.read(projectId);
+
+    // @todo This is not typesafe
+    // ideally we would import package.json directly or as a type "import type ..."
+    // unfortunately both results in package.json being copied to the dist folder while building
+    // which puts all other dist files inside an "src" folder
+    const packageJson = await Fs.readJSON('../../package.json');
+    const currentCoreVersion = packageJson.version as string;
 
     if (Semver.gt(project.coreVersion, currentCoreVersion)) {
       // Upgrade of the client needed before the project can be upgraded

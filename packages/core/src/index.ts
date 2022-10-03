@@ -53,7 +53,7 @@ export default class ElekIoCore {
         },
       },
       log: {
-        debug: false,
+        level: 'warn',
       },
     };
     this.options = Object.assign({}, defaults, options);

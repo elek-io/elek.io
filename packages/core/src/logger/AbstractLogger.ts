@@ -23,24 +23,27 @@ export default abstract class AbstractLogger {
     this.options = options;
     this.eventService = eventService;
 
-    const level = this.options.log.debug === true ? 'debug' : 'info';
+    const logLevel = this.options.log.level;
     const destination = Pino.destination(Path.join(filePath, 'core.log'));
 
     switch (process.env.NODE_ENV) {
       case Environment.PRODUCTION:
         // Use Pino without multistream for enhanced performance
         // and only log to file while in production
-        this.logger = Pino.default({ level }, destination);
+        this.logger = Pino.default({ level: logLevel }, destination);
 
         // this.registerEmergencyFlush();
         break;
       default:
         // Use Pino with multistream to show pretty console output
         // while developing and debugging
-        this.logger = Pino.default({ level }, Pino.multistream([
-          {stream: destination},
-          {stream: PinoPretty.default()}
-        ]));
+        this.logger = Pino.default(
+          { level: logLevel },
+          Pino.multistream([
+            { stream: destination },
+            { stream: PinoPretty.default() },
+          ])
+        );
 
         // this.registerEmergencyFlush();
         break;
