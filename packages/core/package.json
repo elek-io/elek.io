@@ -12,7 +12,7 @@
     "test:base": "NODE_ENV=test c8 mocha --timeout 10000",
     "test:unit": "pnpm run test:base 'test/unit/**/*.ts'",
     "test:integration": "pnpm run test:base 'test/integration/**/*.ts'",
-    "test": "pnpm run test:unit && test:integration"
+    "test": "pnpm run test:base 'test/**/*.ts'"
   },
   "keywords": [],
   "author": "",
