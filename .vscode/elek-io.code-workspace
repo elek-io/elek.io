@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			
+			"name": "Monorepo (root)",
+			"path": "../"			
+		},
+		{
+			"name": "Core (TS)",
+			"path": "../packages/core"
+		},
+		{
+			"name": "UI (React)",
+			"path": "../packages/ui"
+		},
+		{
+			"name": "Client Frontend (Next.js)",
+			"path": "../apps/client-frontend"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+            "node_modules": true
+        }
+	}
+}
