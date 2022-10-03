@@ -1,6 +1,6 @@
 import { describe, it } from 'mocha';
 import { expect } from 'chai';
-import core from '../00-setup.js';
+import core from '../setup.js';
 import Project from '../../src/model/Project.js';
 
 describe('Project', async () => {

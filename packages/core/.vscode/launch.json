@@ -1,0 +1,26 @@
+{
+    "configurations": [
+    {
+        "env": {
+            "NODE_ENV": "debug"
+        },
+        "runtimeArgs": [
+            "--loader", "ts-node/esm"
+        ],
+        "args": [
+            "--timeout",
+            "999999",
+            "--colors",
+            "${workspaceFolder}/test/**/*.ts"
+        ],
+        "internalConsoleOptions": "openOnSessionStart",
+        "name": "Mocha Tests",
+        "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+        "request": "launch",
+        "skipFiles": [
+            "<node_internals>/**"
+        ],
+        "type": "node"
+    }
+    ]
+}
