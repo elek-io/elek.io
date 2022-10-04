@@ -8,7 +8,7 @@ on:
  
 jobs:
   test:
-    name: Test
+    name: Test with coverage report
     timeout-minutes: 15
     runs-on: ubuntu-latest
     # To use Remote Caching, uncomment the next lines and follow the steps below.
@@ -40,8 +40,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run tests
-        run: pnpm test
+      - name: Run tests and report coverage
+        uses: paambaati/codeclimate-action@v2.2.4
+        env:
+          CC_TEST_REPORTER_ID: f6af22f2dc7e5241aa6acd49b5141d194b337a960a277d00c6765ac3b9ff1187
+        with:
+          coverageCommand: pnpm test
 
   build:
     name: Build
