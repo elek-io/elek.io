@@ -46,6 +46,8 @@ jobs:
           CC_TEST_REPORTER_ID: f6af22f2dc7e5241aa6acd49b5141d194b337a960a277d00c6765ac3b9ff1187
         with:
           coverageCommand: pnpm test
+          coverageLocations: |
+            ${{github.workspace}}/*.lcov:lcov
 
   build:
     name: Build
