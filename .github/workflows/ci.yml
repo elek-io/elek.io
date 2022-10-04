@@ -7,8 +7,44 @@ on:
     types: [opened, synchronize]
  
 jobs:
+  test:
+    name: Test
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    # To use Remote Caching, uncomment the next lines and follow the steps below.
+    # env:
+    #  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+    #  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.32.2
+
+      - name: Setup Node.js ${{ matrix.node-version }} environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run tests
+        run: pnpm test
+
   build:
-      name: Build and Test
+      name: Build
       timeout-minutes: 15
       runs-on: ubuntu-latest
       # To use Remote Caching, uncomment the next lines and follow the steps below.
@@ -16,27 +52,29 @@ jobs:
       #  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       #  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
  
-      steps:
-        - name: Check out code
-          uses: actions/checkout@v2
-          with:
-            fetch-depth: 2
- 
-        - uses: pnpm/action-setup@v2.0.1
-          with:
-            version: 6.32.2
- 
-        - name: Setup Node.js environment
-          uses: actions/setup-node@v2
-          with:
-            node-version: 16
-            cache: 'pnpm'
- 
-        - name: Install dependencies
-          run: pnpm install
+      strategy:
+        matrix:
+          node-version: [16.x]
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.32.2
+
+      - name: Setup Node.js ${{ matrix.node-version }} environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
  
         - name: Build
           run: pnpm build
- 
-        - name: Test
-          run: pnpm test
