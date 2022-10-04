@@ -41,7 +41,7 @@ jobs:
         run: pnpm install
 
       - name: Run tests and report coverage
-        uses: paambaati/codeclimate-action@v2.2.4
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: f6af22f2dc7e5241aa6acd49b5141d194b337a960a277d00c6765ac3b9ff1187
         with:
