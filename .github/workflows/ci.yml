@@ -44,17 +44,17 @@ jobs:
         run: pnpm test
 
   build:
-      name: Build
-      timeout-minutes: 15
-      runs-on: ubuntu-latest
-      # To use Remote Caching, uncomment the next lines and follow the steps below.
-      # env:
-      #  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      #  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
- 
-      strategy:
-        matrix:
-          node-version: [16.x]
+    name: Build
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    # To use Remote Caching, uncomment the next lines and follow the steps below.
+    # env:
+    #  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+    #  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
+    strategy:
+      matrix:
+        node-version: [16.x]
 
     steps:
       - name: Check out code
@@ -75,6 +75,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
- 
-        - name: Build
-          run: pnpm build
+
+      - name: Build
+        run: pnpm build
