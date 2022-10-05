@@ -1,4 +1,5 @@
 # Turborepo starter
+
 [![Maintainability](https://api.codeclimate.com/v1/badges/01462e6a23d258bea092/maintainability)](https://codeclimate.com/github/elek-io/elek.io/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/01462e6a23d258bea092/test_coverage)](https://codeclimate.com/github/elek-io/elek.io/test_coverage)
 
