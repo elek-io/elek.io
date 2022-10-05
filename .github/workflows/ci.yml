@@ -1,11 +1,11 @@
 name: CI
- 
+
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
     types: [opened, synchronize]
- 
+
 jobs:
   test:
     name: Test with coverage report
@@ -47,6 +47,7 @@ jobs:
         with:
           debug: true
           coverageCommand: pnpm test
+          prefix: /packages/core
           coverageLocations: |
             ${{github.workspace}}/packages/core/coverage/lcov.info:lcov
 

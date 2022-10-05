@@ -1,5 +1,4 @@
 {
   "all": true,
-  "src": "..",
   "reporter": ["lcov", "text"]
 }
