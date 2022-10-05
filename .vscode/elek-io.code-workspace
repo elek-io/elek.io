@@ -21,6 +21,11 @@
 	"settings": {
 		"files.exclude": {
             "node_modules": true
-        }
+        },
+		"editor.formatOnSave": true,
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		},
 	}
 }
