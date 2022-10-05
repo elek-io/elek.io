@@ -10,15 +10,15 @@ jobs:
   test:
     name: Test with coverage report
     timeout-minutes: 15
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [ubuntu-latest]
+        node-version: [16.x]
+    runs-on: ${{ matrix.platform }}
     # To use Remote Caching, uncomment the next lines and follow the steps below.
     # env:
     #  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
     #  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-
-    strategy:
-      matrix:
-        node-version: [16.x]
 
     steps:
       - name: Check out code
@@ -47,22 +47,22 @@ jobs:
         with:
           debug: true
           coverageCommand: pnpm test
-          prefix: ${{github.workspace}}/packages/core
+          prefix: ${{github.workspace}}/packages/core/
           coverageLocations: |
             ${{github.workspace}}/packages/core/coverage/lcov.info:lcov
 
   build:
     name: Build
     timeout-minutes: 15
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [ubuntu-latest]
+        node-version: [16.x]
+    runs-on: ${{ matrix.platform }}
     # To use Remote Caching, uncomment the next lines and follow the steps below.
     # env:
     #  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
     #  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-
-    strategy:
-      matrix:
-        node-version: [16.x]
 
     steps:
       - name: Check out code
