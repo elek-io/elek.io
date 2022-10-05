@@ -47,9 +47,6 @@ jobs:
         with:
           debug: true
           coverageCommand: pnpm test
-          prefix: ${{github.workspace}}/packages/core/
-          coverageLocations: |
-            ${{github.workspace}}/packages/core/coverage/lcov.info:lcov
 
   build:
     name: Build

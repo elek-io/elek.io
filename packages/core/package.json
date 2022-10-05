@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "test:base": "NODE_ENV=test c8 mocha --timeout 10000",
+    "test:base": "NODE_ENV=test mocha --timeout 10000",
     "test:unit": "pnpm run test:base 'test/unit/**/*.ts'",
     "test:integration": "pnpm run test:base 'test/integration/**/*.ts'",
     "test": "pnpm run test:base 'test/**/*.ts'"
@@ -41,7 +41,6 @@
     "@types/node": "18.7.15",
     "@types/semver": "^7.3.12",
     "@types/uuid": "^8.3.4",
-    "c8": "^7.12.0",
     "chai": "^4.3.6",
     "mocha": "^10.0.0",
     "ts-node": "^10.9.1"

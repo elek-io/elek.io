@@ -4,10 +4,12 @@ importers:
 
   .:
     specifiers:
+      c8: ^7.12.0
       eslint-config-custom: workspace:*
       prettier: ^2.7.1
       turbo: ^1.4.5
     devDependencies:
+      c8: 7.12.0
       eslint-config-custom: link:packages/eslint-config-custom
       prettier: 2.7.1
       turbo: 1.4.5
@@ -58,7 +60,6 @@ importers:
       '@types/node': 18.7.15
       '@types/semver': ^7.3.12
       '@types/uuid': ^8.3.4
-      c8: ^7.12.0
       chai: ^4.3.6
       cheerio: 1.0.0-rc.12
       dugite: ^2.0.0
@@ -99,7 +100,6 @@ importers:
       '@types/node': 18.7.15
       '@types/semver': 7.3.12
       '@types/uuid': 8.3.4
-      c8: 7.12.0
       chai: 4.3.6
       mocha: 10.0.0
       ts-node: 10.9.1_lvhrnbvhu4ldpqhzjdgix4jxca
@@ -3646,7 +3646,7 @@ packages:
       require-directory: 2.1.1
       string-width: 4.2.3
       y18n: 5.0.8
-      yargs-parser: 20.2.4
+      yargs-parser: 20.2.9
     dev: true
 
   /yn/3.1.1:
