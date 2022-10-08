@@ -16,6 +16,10 @@
 		{
 			"name": "Client Frontend (Next.js)",
 			"path": "../apps/client-frontend"
+		},
+		{
+			"name": "Client (Electron)",
+			"path": "../apps/client"
 		}
 	],
 	"settings": {
