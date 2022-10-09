@@ -1,6 +1,7 @@
 import { app } from 'electron';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
+import ElekIoCore from 'core';
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
@@ -12,6 +13,13 @@ if (isProd) {
 
 (async () => {
   await app.whenReady();
+
+  const core = await ElekIoCore.init({
+    signature: {
+      name: 'John Doe',
+      email: 'john.doe@example.com'
+    }
+  });
 
   const mainWindow = createWindow('main', {
     width: 1000,

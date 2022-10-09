@@ -13,7 +13,8 @@
   "dependencies": {
     "electron-serve": "^1.1.0",
     "electron-store": "^8.1.0",
-    "ui": "workspace:*"
+    "ui": "workspace:*",
+    "core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^18.8.3",
