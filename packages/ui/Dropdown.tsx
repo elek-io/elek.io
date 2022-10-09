@@ -3,7 +3,7 @@ import { Menu } from '@headlessui/react';
 export function Dropdown({ foo }: { foo: string }) {
   return (
     <Menu>
-      <Menu.Button>{foo}</Menu.Button>
+      <Menu.Button className={'bg-green-100'}>{foo}</Menu.Button>
       <Menu.Items>
         <Menu.Item>
           {({ active }) => (

@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { Dropdown } from 'ui';
 
 function Home() {
   return (
@@ -17,6 +18,9 @@ function Home() {
         <span>tailwindcss</span>
         <span>=</span>
         <span>💕 </span>
+        <div>
+          <Dropdown foo="bar"></Dropdown>
+        </div>
       </div>
       <div className='mt-1 w-full flex-wrap flex justify-center'>
         <Link href='/next'>
