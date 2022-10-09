@@ -180,7 +180,7 @@ export function notEmpty<T>(value: T | null | undefined): value is T {
  * Returns the slug of given string
  */
 export function slug(string: string): string {
-  return Slugify.default(string, {
+  return Slugify(string, {
     replacement: '-', // replace spaces with replacement character, defaults to `-`
     remove: undefined, // remove characters that match regex, defaults to `undefined`
     lower: true, // convert to lower case, defaults to `false`

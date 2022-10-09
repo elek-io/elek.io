@@ -2,13 +2,20 @@
   "name": "core",
   "version": "0.0.0",
   "description": "Handles core functionality of elek.io projects like file IO, version control, parsing and building.",
-  "type": "module",
-  "exports": "./dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
   "engines": {
     "node": ">=14.16"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc",
+    "build": "rm -rf dist && tsc -p tsconfig-esm.json && tsc -p tsconfig-cjs.json && ./fixup.sh",
     "test:base": "NODE_ENV=test mocha --timeout 10000",
     "test:unit": "pnpm run test:base 'test/unit/**/*.ts'",
     "test:integration": "pnpm run test:base 'test/integration/**/*.ts'",

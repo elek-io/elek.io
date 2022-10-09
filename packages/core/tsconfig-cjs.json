@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig-base.json",
+  "compilerOptions": {
+    "module": "Node16",                                /* Specify what module code is generated. */
+    "target": "ES2015",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "outDir": "./dist/cjs",                              /* Specify an output folder for all emitted files. */
+  }
+}

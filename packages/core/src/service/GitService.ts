@@ -29,13 +29,13 @@ import PQueue from 'p-queue';
 export default class GitService extends AbstractService {
   private logService: LogService;
   private queueCount: number;
-  private queue: PQueue.default;
+  private queue: PQueue;
 
   public constructor(options: ElekIoCoreOptions, logService: LogService) {
     super(ServiceType.GIT, options);
 
     this.logService = logService;
-    this.queue = new PQueue.default({
+    this.queue = new PQueue({
       concurrency: 1,
     });
     this.queueCount = 0;
