@@ -74,6 +74,7 @@ export default (
     ...options,
     ...state,
     webPreferences: {
+      // @todo This is not recommended but currently errors out when used correctly (global is not defined in renderer)
       nodeIntegration: true,
       contextIsolation: false,
       ...options.webPreferences,

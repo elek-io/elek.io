@@ -19,6 +19,7 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
+  "include": ["main/**/*.ts"],
   "exclude": [
     "node_modules",
     "renderer/next.config.js",

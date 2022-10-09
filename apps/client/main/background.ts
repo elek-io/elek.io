@@ -1,3 +1,4 @@
+import Path from 'path';
 import { app } from 'electron';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
@@ -21,9 +22,15 @@ if (isProd) {
     }
   });
 
+  console.log('Core: ', await core.projects.count())
+
   const mainWindow = createWindow('main', {
     width: 1000,
     height: 600,
+    webPreferences: {
+      // @todo preload script is not working yet (module is not defined)
+      // preload: Path.join(__dirname, 'preload.js')
+    }
   });
 
   if (isProd) {
