@@ -11,10 +11,11 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "core": "workspace:*",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.1.0",
-    "ui": "workspace:*",
-    "core": "workspace:*"
+    "next-transpile-modules": "^9.1.0",
+    "ui": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^18.8.3",
