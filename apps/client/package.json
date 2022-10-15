@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.19.4",
+    "@babel/runtime-corejs3": "^7.19.4",
     "core": "workspace:*",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.1.0",

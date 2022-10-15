@@ -15,6 +15,7 @@ importers:
   apps/client:
     specifiers:
       '@babel/runtime': ^7.19.4
+      '@babel/runtime-corejs3': ^7.19.4
       '@types/node': ^18.8.3
       '@types/react': ^18.0.21
       autoprefixer: ^10.4.12
@@ -34,6 +35,7 @@ importers:
       ui: workspace:*
     dependencies:
       '@babel/runtime': 7.19.4
+      '@babel/runtime-corejs3': 7.19.4
       core: link:../../packages/core
       electron-serve: 1.1.0
       electron-store: 8.1.0
@@ -1323,6 +1325,14 @@ packages:
     dependencies:
       core-js-pure: 3.25.5
       regenerator-runtime: 0.13.9
+
+  /@babel/runtime-corejs3/7.19.4:
+    resolution: {integrity: sha512-HzjQ8+dzdx7dmZy4DQ8KV8aHi/74AjEbBGTFutBmg/pd3dY5/q1sfuOGPTFGEytlQhWoeVXqcK5BwMgIkRkNDQ==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      core-js-pure: 3.25.5
+      regenerator-runtime: 0.13.9
+    dev: false
 
   /@babel/runtime/7.18.9:
     resolution: {integrity: sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==}
