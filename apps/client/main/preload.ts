@@ -6,4 +6,4 @@ contextBridge.exposeInMainWorld('versions', {
   electron: () => process.versions.electron,
 });
 
-export default {}
+export default {};

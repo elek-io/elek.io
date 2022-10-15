@@ -381,7 +381,7 @@ export default class AssetService
     }
 
     // We do not use fileBuffer here again because fromFile() is recommended
-    // @todo And a dynamic import is needed, because otherwise client is throwing 
+    // @todo And a dynamic import is needed, because otherwise client is throwing
     // "Error [ERR_REQUIRE_ESM]: require() of ES Module .../node_modules/file-type/index.js from ... not supported."
     const { fileTypeFromFile } = await import('file-type');
     const fileType = await fileTypeFromFile(filePath);

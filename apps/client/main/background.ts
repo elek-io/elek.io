@@ -30,7 +30,7 @@ if (isProd) {
     webPreferences: {
       // @todo preload script is not working yet (module is not defined)
       // preload: Path.join(__dirname, 'preload.js')
-    }
+    },
   });
 
   if (isProd) {

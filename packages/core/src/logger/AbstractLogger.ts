@@ -39,10 +39,7 @@ export default abstract class AbstractLogger {
         // while developing and debugging
         this.logger = Pino(
           { level: logLevel },
-          Pino.multistream([
-            { stream: destination },
-            { stream: PinoPretty() },
-          ])
+          Pino.multistream([{ stream: destination }, { stream: PinoPretty() }])
         );
 
         // this.registerEmergencyFlush();
