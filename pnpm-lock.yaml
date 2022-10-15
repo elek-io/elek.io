@@ -14,7 +14,6 @@ importers:
 
   apps/client:
     specifiers:
-      '@babel/runtime': ^7.19.4
       '@babel/runtime-corejs3': ^7.19.4
       '@types/node': ^18.8.3
       '@types/react': ^18.0.21
@@ -34,7 +33,6 @@ importers:
       typescript: ^4.8.4
       ui: workspace:*
     dependencies:
-      '@babel/runtime': 7.19.4
       '@babel/runtime-corejs3': 7.19.4
       core: link:../../packages/core
       electron-serve: 1.1.0
@@ -1345,6 +1343,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
+    dev: true
 
   /@babel/template/7.18.10:
     resolution: {integrity: sha512-TI+rCtooWHr3QJ27kJxfjutghu44DLnasDMwpDqCXVTal9RLp3RSYNh4NdBrRP2cQAoG9A8juOQl6P6oZG4JxA==}
