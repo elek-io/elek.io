@@ -14,6 +14,7 @@ importers:
 
   apps/client:
     specifiers:
+      '@babel/runtime': ^7.19.4
       '@types/node': ^18.8.3
       '@types/react': ^18.0.21
       autoprefixer: ^10.4.12
@@ -32,6 +33,7 @@ importers:
       typescript: ^4.8.4
       ui: workspace:*
     dependencies:
+      '@babel/runtime': 7.19.4
       core: link:../../packages/core
       electron-serve: 1.1.0
       electron-store: 8.1.0
@@ -1324,6 +1326,12 @@ packages:
 
   /@babel/runtime/7.18.9:
     resolution: {integrity: sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.9
+
+  /@babel/runtime/7.19.4:
+    resolution: {integrity: sha512-EXpLCrk55f+cYqmHsSR+yD/0gAIMxxA9QK9lnQWzhMCvt+YmoBN7Zx94s++Kv0+unHk39vxNO8t+CMA2WSS3wA==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
@@ -5455,7 +5463,7 @@ packages:
   /regenerator-transform/0.15.0:
     resolution: {integrity: sha512-LsrGtPmbYg19bcPHwdtmXwbW+TqNvtY4riE3P83foeHRroMbH6/2ddFBfab3t7kbzc7v7p4wbkIecHImqt0QNg==}
     dependencies:
-      '@babel/runtime': 7.18.9
+      '@babel/runtime': 7.19.4
     dev: true
 
   /regexp.prototype.flags/1.4.3:
