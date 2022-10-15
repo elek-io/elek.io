@@ -1,5 +1,5 @@
 {
-  "extends": "./tsconfig-base.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "Node16",                                /* Specify what module code is generated. */
     "target": "ES2015",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */

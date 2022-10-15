@@ -4,6 +4,7 @@
   "description": "Handles core functionality of elek.io projects like file IO, version control, parsing and building.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "type": "module",
   "types": "dist/esm/index.d.ts",
   "exports": {
     ".": {
@@ -31,7 +32,7 @@
     "fs-extra": "^10.1.0",
     "is-svg": "^4.3.2",
     "lodash": "^4.17.21",
-    "p-queue": "6.x.x",
+    "p-queue": "5.x.x",
     "pino": "^8.5.0",
     "pino-pretty": "^9.1.0",
     "rxjs": "^7.5.6",

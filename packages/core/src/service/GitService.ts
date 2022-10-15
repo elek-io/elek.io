@@ -39,18 +39,18 @@ export default class GitService extends AbstractService {
       concurrency: 1,
     });
     this.queueCount = 0;
-    this.queue.on('add', (item) => {
-      this.logService.debug(
-        `Item added. Size: ${this.queue.size} Pending: ${this.queue.pending}`,
-        { item }
-      );
-    });
-    this.queue.on('active', (item) => {
+    // this.queue.on('add', (item) => {
+    //   this.logService.debug(
+    //     `Item added. Size: ${this.queue.size} Pending: ${this.queue.pending}`,
+    //     { item }
+    //   );
+    // });
+    this.queue.on('active', () => {
       this.logService.debug(
         `Working on item #${++this.queueCount}. Size: ${
           this.queue.size
         } Pending: ${this.queue.pending}`,
-        { item }
+        {}
       );
     });
     // this.queue.on('completed', (item) => {

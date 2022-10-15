@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import core from '../setup.js';
 import Project from '../../src/model/Project.js';
 
-describe('Project', async () => {
+describe('Project', () => {
   let project: Project;
 
   it('create', async () => {

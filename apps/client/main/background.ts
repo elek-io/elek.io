@@ -2,7 +2,7 @@ import Path from 'path';
 import { app } from 'electron';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
-import ElekIoCore from 'core';
+// import ElekIoCore from 'core/dist/cjs/index.js';
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
@@ -15,14 +15,14 @@ if (isProd) {
 (async () => {
   await app.whenReady();
 
-  const core = await ElekIoCore.init({
-    signature: {
-      name: 'John Doe',
-      email: 'john.doe@example.com'
-    }
-  });
+  // const core = await ElekIoCore.init({
+  //   signature: {
+  //     name: 'John Doe',
+  //     email: 'john.doe@example.com'
+  //   }
+  // });
 
-  console.log('Core: ', await core.projects.count())
+  // console.log('Core: ', await core.projects.count())
 
   const mainWindow = createWindow('main', {
     width: 1000,
