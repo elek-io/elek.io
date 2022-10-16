@@ -1,35 +1,91 @@
 {
-  "private": true,
-  "name": "client",
-  "description": "My application description",
-  "version": "1.0.0",
-  "author": "Yoshihide Shiono <shiono.yoshihide@gmail.com>",
-  "main": "app/background.js",
+  "name": "forge-webpack-ts",
+  "productName": "forge-webpack-ts",
+  "version": "0.0.0",
+  "description": "My Electron application description",
+  "main": ".webpack/main",
   "scripts": {
-    "dev": "nextron",
-    "build": "nextron build",
-    "postinstall": "electron-builder install-app-deps"
+    "dev": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "eslint --ext .ts,.tsx ."
   },
-  "dependencies": {
-    "@babel/runtime-corejs3": "^7.19.4",
-    "core": "workspace:*",
-    "electron-serve": "^1.1.0",
-    "electron-store": "^8.1.0",
-    "next-transpile-modules": "^9.1.0",
-    "ui": "workspace:*"
+  "keywords": [],
+  "author": {
+    "name": "Nils Kolvenbach",
+    "email": "info@nils-kolvenbach.de"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "forge_webpack_ts"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/renderer/index.html",
+                  "js": "./src/renderer/index.ts",
+                  "name": "main_window",
+                  "preload": {
+                    "js": "./src/renderer/preload.ts"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    }
   },
   "devDependencies": {
-    "@types/node": "^18.8.3",
-    "@types/react": "^18.0.21",
-    "autoprefixer": "^10.4.12",
-    "electron": "^21.1.0",
-    "electron-builder": "^23.6.0",
-    "next": "^12.3.1",
-    "nextron": "^8.2.0",
-    "postcss": "^8.4.17",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwindcss": "^3.1.8",
-    "typescript": "^4.8.4"
+    "@electron-forge/cli": "^6.0.0-beta.67",
+    "@electron-forge/maker-deb": "^6.0.0-beta.67",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.67",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.67",
+    "@electron-forge/maker-zip": "^6.0.0-beta.67",
+    "@electron-forge/plugin-webpack": "^6.0.0-beta.67",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "@vercel/webpack-asset-relocator-loader": "^1.7.3",
+    "css-loader": "^6.7.1",
+    "electron": "21.1.1",
+    "eslint": "^8.25.0",
+    "eslint-plugin-import": "^2.26.0",
+    "fork-ts-checker-webpack-plugin": "^7.2.13",
+    "node-loader": "^2.0.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.1",
+    "typescript": "~4.5.4"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
   }
 }
