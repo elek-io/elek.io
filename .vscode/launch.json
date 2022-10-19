@@ -1,40 +1,23 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Client: Main",
-      "type": "node",
-      "request": "attach",
-      "protocol": "inspector",
-      "port": 9292,
-      "skipFiles": ["<node_internals>/**"],
-      "sourceMapPathOverrides": {
-        "webpack:///./~/*": "${workspaceFolder}/node_modules/*",
-        "webpack:///./*": "${workspaceFolder}/*",
-        "webpack:///*": "*"
-      }
-    },
-    {
-      "name": "Client: Renderer",
-      "type": "chrome",
-      "request": "attach",
-      "port": 5858,
-      "timeout": 10000,
-      "urlFilter": "http://localhost:*",
-      "webRoot": "${workspaceFolder}/app",
-      "sourceMapPathOverrides": {
-        "webpack:///./src/*": "${webRoot}/*"
-      }
-    }
-  ],
-  "compounds": [
-    {
-      "name": "Client: All",
-      "preLaunchTask": "dev",
-      "configurations": ["Client: Main", "Client: Renderer"]
-    }
-  ]
+    // Verwendet IntelliSense zum Ermitteln möglicher Attribute.
+    // Zeigen Sie auf vorhandene Attribute, um die zugehörigen Beschreibungen anzuzeigen.
+    // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Electron Main",
+            "runtimeExecutable": "${workspaceFolder}/apps/client/node_modules/.bin/electron-forge-vscode-nix",
+            "windows": {
+              "runtimeExecutable": "${workspaceFolder}/apps/client/node_modules/.bin/electron-forge-vscode-win.cmd"
+            },
+            // runtimeArgs will be passed directly to your Electron application
+            "runtimeArgs": [
+              "foo",
+              "bar"
+            ],
+            "cwd": "${workspaceFolder}/apps/client"
+          }
+    ]
 }

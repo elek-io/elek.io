@@ -14,7 +14,11 @@
 			"path": "../packages/ui"
 		},
 		{
-			"name": "Client (Electron & Next.js)",
+			"name": "Client Frontend (Next.js)",
+			"path": "../apps/client-frontend"
+		},
+		{
+			"name": "Client (Electron)",
 			"path": "../apps/client"
 		}
 	],
