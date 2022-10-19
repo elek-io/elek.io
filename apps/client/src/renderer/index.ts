@@ -26,14 +26,9 @@
  * ```
  */
 
-import './index.css';
+console.log(
+  '👋 This message is being logged by "renderer.js", included via webpack'
+);
 
-console.log('👋 This message is being logged by "renderer.js", included via webpack');
-
-const api = (window as any).electronAPI
-const setButton = document.getElementById('btn')
-const titleInput = document.getElementById('title') as HTMLInputElement
-setButton.addEventListener('click', () => {
-    const title = titleInput.value
-    api.setTitle(title)
-});
+const api = (window as any).electronAPI;
+api.setTitle('Hello from the renderer via IPC!');
