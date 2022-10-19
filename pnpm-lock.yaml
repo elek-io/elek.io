@@ -24,6 +24,7 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.40.0
       '@typescript-eslint/parser': ^5.40.0
       '@vercel/webpack-asset-relocator-loader': ^1.7.3
+      client-frontend: workspace:*
       copy-webpack-plugin: ^11.0.0
       core: workspace:*
       css-loader: ^6.7.1
@@ -38,6 +39,7 @@ importers:
       ts-loader: ^9.4.1
       typescript: ~4.5.4
     dependencies:
+      client-frontend: link:../client-frontend
       core: link:../../packages/core
       electron-squirrel-startup: 1.0.0
       express: 4.18.2
