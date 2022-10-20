@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-// import { Dropdown } from 'ui';
+import { Dropdown } from 'ui';
 
 const Home: NextPage = () => {
   return (
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
           </a>
         </h1>
 
-        {/* <Dropdown foo='bar'></Dropdown> */}
+        <Dropdown foo='bar'></Dropdown>
 
         <p className="mt-3 text-2xl">
           Get started by editing{' '}
