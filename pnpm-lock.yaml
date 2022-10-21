@@ -5,10 +5,12 @@ importers:
   .:
     specifiers:
       eslint-config-custom: workspace:*
+      husky: ^8.0.0
       prettier: ^2.7.1
       turbo: ^1.4.5
     devDependencies:
       eslint-config-custom: link:packages/eslint-config-custom
+      husky: 8.0.1
       prettier: 2.7.1
       turbo: 1.4.5
 
@@ -4878,6 +4880,12 @@ packages:
     resolution: {integrity: sha512-Fl70vYtsAFb/C06PTS9dZBo7ihau+Tu/DNCk/OyHhea07S+aeMWpFFkUaXRa8fI+ScZbEI8dfSxwY7gxZ9SAVQ==}
     dependencies:
       ms: 2.1.3
+    dev: true
+
+  /husky/8.0.1:
+    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /iconv-lite/0.4.24:
