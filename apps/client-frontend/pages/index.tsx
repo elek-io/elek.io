@@ -19,7 +19,7 @@ const Home: NextPage = () => {
           </a>
         </h1>
 
-        <Dropdown foo='bar'></Dropdown>
+        <Dropdown foo="bar"></Dropdown>
 
         <p className="mt-3 text-2xl">
           Get started by editing{' '}
