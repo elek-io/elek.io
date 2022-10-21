@@ -3,23 +3,27 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3002",
-    "build": "next build && next export --outdir ../client/static"
+    "build": "next build && next export --outdir ../client/static",
+    "test": "pnpm run dev & cypress run && kill-port 3002",
+    "test:dev": "pnpm run dev & cypress open && kill-port 3002"
   },
   "dependencies": {
-    "ui": "workspace:*",
     "next": "12.3.1",
     "next-transpile-modules": "^9.1.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "ui": "workspace:*"
   },
   "devDependencies": {
-    "tsconfig": "workspace:*",
     "@types/node": "17.0.35",
     "@types/react": "18.0.9",
     "@types/react-dom": "18.0.5",
     "autoprefixer": "^10.4.12",
+    "cypress": "^10.10.0",
+    "kill-port": "^2.0.1",
     "postcss": "^8.4.18",
     "tailwindcss": "^3.1.8",
+    "tsconfig": "workspace:*",
     "typescript": "4.7.2"
   }
 }
