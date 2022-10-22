@@ -32,3 +32,5 @@ console.log(
 
 const api = (window as any).electronAPI;
 api.setTitle('Hello from the renderer via IPC!');
+
+export {};

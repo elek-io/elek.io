@@ -18,6 +18,9 @@ if (require('electron-squirrel-startup')) {
 const handleSetTitle = (event: any, title: string): void => {
   const webContents = event.sender;
   const win = BrowserWindow.fromWebContents(webContents);
+  if (!win) {
+    throw new Error('Window is null');
+  }
   win.setTitle(title);
 };
 

@@ -66,6 +66,7 @@
     }
   },
   "devDependencies": {
+    "tsconfig": "workspace:*",
     "@electron-forge/cli": "^6.0.0-beta.67",
     "@electron-forge/maker-deb": "^6.0.0-beta.67",
     "@electron-forge/maker-rpm": "^6.0.0-beta.67",
