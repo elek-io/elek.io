@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: Test with coverage report
+    name: Lint & test
     timeout-minutes: 15
     strategy:
       matrix:
@@ -39,6 +39,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Run lint
+        run: pnpm lint
 
       - name: Run tests
         run: pnpm test
