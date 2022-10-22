@@ -8,11 +8,20 @@ node_modules
 # testing
 coverage
 
+# webpack
+.webpack/
+
 # next.js
+next-env.d.ts
 .next/
 out/
 build
 dist
+
+# apps
+apps/client/static/
+apps/client-frontend/cypress/screenshots/
+apps/client-frontend/cypress/videos/
 
 # misc
 .DS_Store
