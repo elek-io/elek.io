@@ -81,3 +81,13 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: elek.io client
+          path: |
+            apps/client/out/**/*.exe
+            apps/client/out/**/*.app
+            apps/client/out/**/*.rpm
+          if-no-files-found: error
