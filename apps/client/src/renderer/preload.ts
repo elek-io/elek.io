@@ -1,6 +1,5 @@
 // See the Electron documentation for details on how to use preload scripts:
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
-import ElekIoCore from 'core';
 import ProjectService from 'core/dist/esm/service/ProjectService';
 import { contextBridge, ipcRenderer } from 'electron';
 
