@@ -26,11 +26,4 @@
  * ```
  */
 
-console.log(
-  '👋 This message is being logged by "renderer.js", included via webpack'
-);
-
-const api = (window as any).electronAPI;
-api.setTitle('Hello from the renderer via IPC!');
-
 export {};

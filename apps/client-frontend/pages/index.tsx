@@ -4,6 +4,11 @@ import Image from 'next/image';
 import { Dropdown } from 'ui';
 
 const Home: NextPage = () => {
+  const onGetCount = async () => {
+    const count = await window.ipc.core.projects.count();
+    console.log('Next.js count from core', count);
+  };
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
@@ -19,6 +24,7 @@ const Home: NextPage = () => {
           </a>
         </h1>
 
+        <button onClick={onGetCount}>Hailmary!</button>
         <Dropdown foo="bar"></Dropdown>
 
         <p className="mt-3 text-2xl">

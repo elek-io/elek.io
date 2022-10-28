@@ -1,5 +1,10 @@
 import Path from 'path';
-import { app, BrowserWindow, ipcMain } from 'electron';
+import {
+  app,
+  BrowserWindow,
+  BrowserWindowConstructorOptions,
+  ipcMain,
+} from 'electron';
 import ElekIoCore from 'core';
 import express from 'express';
 
@@ -9,84 +14,105 @@ import express from 'express';
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) {
-  // eslint-disable-line global-require
-  app.quit();
+class Main {
+  private readonly expressApp;
+
+  constructor() {
+    if (app.isPackaged) {
+      this.expressApp = express();
+    }
+
+    // Handle creating/removing shortcuts on Windows when installing/uninstalling.
+    if (require('electron-squirrel-startup')) {
+      // eslint-disable-line global-require
+      app.quit();
+    }
+
+    // Register app events
+    app.on('ready', this.onReady.bind(this));
+    app.on('window-all-closed', this.onWindowAllClosed.bind(this));
+    app.on('activate', this.onActivate.bind(this));
+  }
+
+  private onWindowAllClosed() {
+    // Quit when all windows are closed, except on macOS. There, it's common
+    // for applications and their menu bar to stay active until the user quits
+    // explicitly with Cmd + Q.
+    if (process.platform !== 'darwin') {
+      app.quit();
+    }
+  }
+
+  private async onActivate() {
+    // On OS X it's common to re-create a window in the app when the
+    // dock icon is clicked and there are no other windows open.
+    if (BrowserWindow.getAllWindows().length === 0) {
+      await this.createWindow('/');
+    }
+  }
+
+  private async onReady() {
+    if (app.isPackaged && this.expressApp) {
+      // Client is in production
+      // Serve static files via express on port 3001
+      this.expressApp.use(
+        express.static(Path.resolve(__dirname, '../renderer/main_window'))
+      );
+      this.expressApp.listen(3001);
+    }
+
+    const core = await ElekIoCore.init({
+      signature: {
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+      },
+    });
+
+    await this.registerIpcMain(core);
+    const mainWindow = await this.createWindow('/');
+  }
+
+  private async createWindow(
+    path: string,
+    options?: BrowserWindowConstructorOptions
+  ) {
+    // Set defaults if missing
+    const defaults: BrowserWindowConstructorOptions = {
+      height: 600,
+      width: 800,
+    };
+    options = Object.assign({}, defaults, options);
+
+    // Overwrite webPreferences
+    options.webPreferences = {
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+    };
+
+    const window = new BrowserWindow(options);
+
+    if (app.isPackaged) {
+      // Client is in production
+      // Serve static files via express and load them inside the window
+      window.loadURL(Path.join('http://localhost:3001', path));
+    } else {
+      // Client is in development
+      // Consume the "next start" endpoint of client-frontend with HMR support
+      window.loadURL(Path.join('http://localhost:3002', path));
+      // Open DevTools.
+      window.webContents.openDevTools();
+    }
+
+    return window;
+  }
+
+  private async registerIpcMain(core: ElekIoCore) {
+    ipcMain.handle('core:projects:count', async () => {
+      return await core.projects.count();
+    });
+  }
 }
 
-const handleSetTitle = (event: any, title: string): void => {
-  const webContents = event.sender;
-  const win = BrowserWindow.fromWebContents(webContents);
-  if (!win) {
-    throw new Error('Window is null');
-  }
-  win.setTitle(title);
-};
-
-const createWindow = (): void => {
-  // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    height: 600,
-    width: 800,
-    webPreferences: {
-      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
-    },
-  });
-
-  if (app.isPackaged) {
-    // Client is in production
-    // Serve static files via express and load them inside the window
-    // const express = import('express');
-    const expressApp = express();
-    expressApp.use(
-      express.static(Path.resolve(__dirname, '../renderer/main_window'))
-    );
-    expressApp.listen(3001, () => {
-      mainWindow.loadURL('http://localhost:3001');
-    });
-  } else {
-    // Client is in development
-    // Consume the "next start" endpoint of client-frontend with HMR support
-    mainWindow.loadURL('http://localhost:3002');
-  }
-
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
-};
-
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.on('ready', async () => {
-  ipcMain.on('set-title', handleSetTitle);
-  const core = await ElekIoCore.init({
-    signature: {
-      name: 'John Doe',
-      email: 'john.doe@example.com',
-    },
-  });
-  const count = await core.projects.count();
-  console.log('Projects: ', count);
-  createWindow();
-});
-
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
-
-app.on('activate', () => {
-  // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
-});
+export default new Main();
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
