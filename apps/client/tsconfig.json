@@ -1,4 +1,4 @@
 {
-  "extends": "@elek.io/config/tsconfig-electron.json",
+  "extends": "config/tsconfig-electron.json",
   "include": ["src/**/*"]
 }

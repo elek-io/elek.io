@@ -1,3 +1,3 @@
-const config = require('@elek.io/config/tailwind.config.js');
+const config = require('config/tailwind.config.js');
 
 module.exports = config;

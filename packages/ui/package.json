@@ -1,5 +1,5 @@
 {
-  "name": "@elek.io/ui",
+  "name": "ui",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,7 +10,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc && tailwindcss -i ./src/styles.css -o ./dist/styles.css",
-    "lint": "eslint ./src/*.ts*"
+    "lint": "eslint ./src/*.ts*",
+    "clean": "rm -rf ./dist"
   },
   "devDependencies": {
     "@types/react": "^18.0.18",
@@ -22,7 +23,7 @@
     "react": "^18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "^3.1.8",
-    "@elek.io/config": "workspace:*",
+    "config": "workspace:*",
     "typescript": "^4.8.2"
   },
   "dependencies": {

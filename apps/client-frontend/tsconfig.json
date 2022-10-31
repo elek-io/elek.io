@@ -1,5 +1,5 @@
 {
-  "extends": "@elek.io/config/tsconfig-nextjs.json",
+  "extends": "config/tsconfig-nextjs.json",
   "compilerOptions": {
     "types": ["cypress", "node"]
   },

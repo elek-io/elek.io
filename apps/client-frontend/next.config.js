@@ -1,4 +1,4 @@
-const withTM = require('next-transpile-modules')(['@elek.io/ui']);
+const withTM = require('next-transpile-modules')(['ui']);
 
 /** @type {import('next').NextConfig} */
 const config = {

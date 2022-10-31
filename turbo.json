@@ -9,10 +9,14 @@
       "outputs": []
     },
     "dev": {
-      "cache": false
+      "cache": false,
+      "dependsOn": ["core#build", "ui#build"]
     },
     "test": {
       "dependsOn": ["^build"]
+    },
+    "clean": {
+      "cache": false
     }
   }
 }

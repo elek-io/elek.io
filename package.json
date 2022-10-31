@@ -12,6 +12,7 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "turbo run test",
+    "clean": "turbo run clean",
     "prepare": "husky install",
     "publish": "turbo run publish"
   },

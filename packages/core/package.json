@@ -1,5 +1,5 @@
 {
-  "name": "@elek.io/core",
+  "name": "core",
   "version": "0.0.0",
   "description": "Handles core functionality of elek.io projects like file IO, version control, parsing and building.",
   "main": "dist/cjs/index.js",
@@ -20,7 +20,8 @@
     "test:base": "NODE_ENV=test mocha --timeout 10000",
     "test:unit": "pnpm run test:base 'test/unit/**/*.ts'",
     "test:integration": "pnpm run test:base 'test/integration/**/*.ts'",
-    "test": "pnpm run test:base 'test/**/*.ts'"
+    "test": "pnpm run test:base 'test/**/*.ts'",
+    "clean": "rm -rf ./dist"
   },
   "keywords": [],
   "author": "",
