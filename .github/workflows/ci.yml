@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: Lint & test
+    name: Lint & Test
     timeout-minutes: 15
     strategy:
       matrix:
@@ -52,7 +52,6 @@ jobs:
     strategy:
       matrix:
         platform: [ubuntu-latest, macos-latest, windows-latest]
-        # platform: [ubuntu-latest, macos-latest]
         node-version: [16.x]
     runs-on: ${{ matrix.platform }}
     # To use Remote Caching, uncomment the next lines and follow the steps below.
@@ -83,9 +82,12 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: elek.io client
-          path: apps/client/out/make
-          if-no-files-found: error
+      # Uncomment if necessary
+      # For example to inspect the build applications
+      #
+      # - name: Upload artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: elek.io client
+      #     path: apps/client/out/make
+      #     if-no-files-found: error
