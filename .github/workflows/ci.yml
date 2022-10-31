@@ -52,6 +52,7 @@ jobs:
     strategy:
       matrix:
         platform: [ubuntu-latest, macos-latest, windows-latest]
+        # platform: [ubuntu-latest, macos-latest]
         node-version: [16.x]
     runs-on: ${{ matrix.platform }}
     # To use Remote Caching, uncomment the next lines and follow the steps below.
