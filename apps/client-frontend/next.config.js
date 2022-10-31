@@ -4,9 +4,8 @@ const withTM = require('next-transpile-modules')(['ui']);
 const config = {
   reactStrictMode: true,
   images: {
-    unoptimized: true
-  }
-}
-
+    unoptimized: true,
+  },
+};
 
 module.exports = withTM(config);

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Electron",
-  "extends": "./base.json",
+  "extends": "./tsconfig-base.json",
   "compilerOptions": {
     "allowJs": true,
     "module": "commonjs",

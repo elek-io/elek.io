@@ -27,6 +27,7 @@ importers:
       '@typescript-eslint/parser': ^5.40.0
       '@vercel/webpack-asset-relocator-loader': ^1.7.3
       client-frontend: workspace:*
+      config: workspace:*
       copy-webpack-plugin: ^11.0.0
       core: workspace:*
       css-loader: ^6.7.1
@@ -39,7 +40,6 @@ importers:
       node-loader: ^2.0.0
       style-loader: ^3.3.1
       ts-loader: ^9.4.1
-      tsconfig: workspace:*
       typescript: ~4.5.4
     dependencies:
       client-frontend: link:../client-frontend
@@ -57,6 +57,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.40.0_rksg5vng3dkzwddcx5q6pysrbq
       '@typescript-eslint/parser': 5.40.0_xvcshhxeosngsn5bmcucl2prs4
       '@vercel/webpack-asset-relocator-loader': 1.7.3
+      config: link:../../packages/config
       copy-webpack-plugin: 11.0.0
       css-loader: 6.7.1
       electron: 21.1.1
@@ -66,7 +67,6 @@ importers:
       node-loader: 2.0.0
       style-loader: 3.3.1
       ts-loader: 9.4.1_typescript@4.5.5
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.5.5
 
   apps/client-frontend:
@@ -75,6 +75,7 @@ importers:
       '@types/react': 18.0.9
       '@types/react-dom': 18.0.5
       autoprefixer: ^10.4.12
+      config: workspace:*
       cypress: ^10.10.0
       kill-port: ^2.0.1
       next: 12.3.1
@@ -83,7 +84,6 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0
       tailwindcss: ^3.1.8
-      tsconfig: workspace:*
       typescript: 4.7.2
       ui: workspace:*
     dependencies:
@@ -97,12 +97,15 @@ importers:
       '@types/react': 18.0.9
       '@types/react-dom': 18.0.5
       autoprefixer: 10.4.12_postcss@8.4.18
+      config: link:../../packages/config
       cypress: 10.10.0
       kill-port: 2.0.1
       postcss: 8.4.18
       tailwindcss: 3.1.8
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.7.2
+
+  packages/config:
+    specifiers: {}
 
   packages/core:
     specifiers:
@@ -174,9 +177,6 @@ importers:
     devDependencies:
       typescript: 4.8.2
 
-  packages/tsconfig:
-    specifiers: {}
-
   packages/ui:
     specifiers:
       '@headlessui/react': ^1.6.6
@@ -184,28 +184,30 @@ importers:
       '@types/react': ^18.0.18
       '@types/react-dom': ^18.0.6
       autoprefixer: ^10.4.12
+      class-variance-authority: ^0.2.4
+      config: workspace:*
       eslint: ^8.23.0
       eslint-config-custom: workspace:*
       postcss: ^8.4.18
       react: ^18.2.0
       react-dom: 18.2.0
       tailwindcss: ^3.1.8
-      tsconfig: workspace:*
       typescript: ^4.8.2
     dependencies:
       '@headlessui/react': 1.6.6_biqbaboplfbrettd7655fr4n2y
       '@heroicons/react': 2.0.10_react@18.2.0
+      class-variance-authority: 0.2.4_typescript@4.8.2
     devDependencies:
       '@types/react': 18.0.18
       '@types/react-dom': 18.0.6
       autoprefixer: 10.4.12_postcss@8.4.18
+      config: link:../config
       eslint: 8.23.0
       eslint-config-custom: link:../eslint-config-custom
       postcss: 8.4.18
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       tailwindcss: 3.1.8
-      tsconfig: link:../tsconfig
       typescript: 4.8.2
 
 packages:
@@ -2359,6 +2361,17 @@ packages:
   /ci-info/3.5.0:
     resolution: {integrity: sha512-yH4RezKOGlOhxkmhbeNuC4eYZKAUsEaGtBuBzDDP1eFUKiccDWzBABxBfOx31IDwDIXMTxWuwAxUGModvkbuVw==}
     dev: true
+
+  /class-variance-authority/0.2.4_typescript@4.8.2:
+    resolution: {integrity: sha512-JJKn9ESARiNEBBRdTSPB9/SwaPb+wi19DMX/r8BVSyp1dxHa3JyUxa2GQjEVag5rBi+O3pL64UZ0XhnQsMz+3w==}
+    peerDependencies:
+      typescript: '>= 4.5.5 < 5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 4.8.2
+    dev: false
 
   /clean-css/5.3.1:
     resolution: {integrity: sha512-lCr8OHhiWCTw4v8POJovCoh4T7I9U11yVsPjMWWnnMmp9ZowCxyad1Pathle/9HjaDp+fdQKjO9fQydE6RHTZg==}

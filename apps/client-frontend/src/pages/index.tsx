@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import { Dropdown } from 'ui';
+import { Button } from 'ui';
 
 const Home: NextPage = () => {
-  const onGetCount = async () => {
+  const getCount = async () => {
     const count = await window.ipc.core.projects.count();
     console.log('Next.js count from core', count);
   };
@@ -24,8 +24,9 @@ const Home: NextPage = () => {
           </a>
         </h1>
 
-        <button onClick={onGetCount}>Hailmary!</button>
-        <Dropdown foo="bar"></Dropdown>
+        <Button onClick={getCount}>
+          Log projects count from core to console
+        </Button>
 
         <p className="mt-3 text-2xl">
           Get started by editing{' '}
