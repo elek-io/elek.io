@@ -13,7 +13,8 @@
       "dependsOn": ["core#build", "ui#build"]
     },
     "test": {
-      "dependsOn": ["^build"]
+      "cache": false,
+      "dependsOn": ["ui#build"]
     },
     "clean": {
       "cache": false
