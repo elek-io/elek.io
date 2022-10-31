@@ -1,5 +1,5 @@
 {
-  "name": "core",
+  "name": "@elek.io/core",
   "version": "0.0.0",
   "description": "Handles core functionality of elek.io projects like file IO, version control, parsing and building.",
   "main": "dist/cjs/index.js",
