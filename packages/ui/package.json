@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc && tailwindcss -i ./src/styles.css -o ./dist/styles.css",
-    "lint": "eslint *.ts*"
+    "lint": "eslint ./src/*.ts*"
   },
   "devDependencies": {
     "@types/react": "^18.0.18",
