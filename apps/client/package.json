@@ -1,6 +1,6 @@
 {
-  "name": "@elek.io/client",
-  "productName": "@elek.io/client",
+  "name": "client",
+  "productName": "client",
   "version": "0.0.0",
   "description": "My Electron application description",
   "main": "./.webpack/main",
