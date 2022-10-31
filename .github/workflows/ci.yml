@@ -86,8 +86,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: elek.io client
-          path: |
-            apps/client/out/**/*.exe
-            apps/client/out/**/*.app
-            apps/client/out/**/*.rpm
+          path: apps/client/out
           if-no-files-found: error
