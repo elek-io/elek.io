@@ -11,7 +11,6 @@
   "scripts": {
     "build": "tsc && tailwindcss -i ./src/styles.css -o ./dist/styles.css",
     "dev": "start-storybook -p 3003",
-    "lint": "eslint ./src/*.ts*",
     "clean": "rm -rf ./dist"
   },
   "devDependencies": {
@@ -29,8 +28,6 @@
     "autoprefixer": "^10.4.12",
     "babel-loader": "^8.2.5",
     "config": "workspace:*",
-    "eslint": "^8.23.0",
-    "eslint-config-custom": "workspace:*",
     "postcss": "^8.4.18",
     "postcss-loader": "^7.0.1",
     "react": "^18.2.0",
