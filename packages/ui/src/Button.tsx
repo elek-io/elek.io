@@ -13,7 +13,7 @@ const styles = cva('base', {
     },
   },
   defaultVariants: {
-    intent: 'primary',
+    intent: 'secondary',
   },
 });
 
