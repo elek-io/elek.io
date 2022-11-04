@@ -48,3 +48,7 @@ To build all apps and packages, run the following command:
 ```
 pnpm run build
 ```
+
+### CI/CD
+
+CI/CD is handled by GitHub Actions. You can find it's configuration files inside `.github/workflows`. CI is mainly run on pull requests to validate the submitted code by linting, testing and building the application. CD is only run on releases / whenever code is pushed to the `main` branch and release drafts are automatically opened.
