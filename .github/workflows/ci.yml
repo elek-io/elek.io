@@ -4,6 +4,7 @@ on:
   push:
     branches: ['main']
   pull_request:
+    # branches: ['main', 'development']
     types: [opened, synchronize]
 
 jobs:
@@ -21,18 +22,13 @@ jobs:
       - name: Lint Code
         uses: github/super-linter/slim@v4
         env:
-          VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   test:
     name: Test
     timeout-minutes: 15
-    strategy:
-      matrix:
-        platform: [ubuntu-latest]
-        node-version: [16.x]
-    runs-on: ${{ matrix.platform }}
+    runs-on: ubuntu-latest
     # To use Remote Caching, uncomment the next lines and follow the steps below.
     # env:
     #  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -49,10 +45,10 @@ jobs:
         with:
           version: 6
 
-      - name: Setup Node.js ${{ matrix.node-version }} environment
+      - name: Setup Node.js 16.x environment
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 16.x
           cache: 'pnpm'
 
       - name: Install dependencies
