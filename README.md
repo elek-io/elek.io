@@ -1,6 +1,5 @@
 # elek.io
 
-[![GitHub Super-Linter](https://github.com/elek-io/elek.io/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 [![Maintainability](https://api.codeclimate.com/v1/badges/01462e6a23d258bea092/maintainability)](https://codeclimate.com/github/elek-io/elek.io/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/01462e6a23d258bea092/test_coverage)](https://codeclimate.com/github/elek-io/elek.io/test_coverage)
 
@@ -51,4 +50,4 @@ pnpm run build
 
 ### CI/CD
 
-CI/CD is handled by GitHub Actions. You can find it's configuration files inside `.github/workflows`. CI is mainly run on pull requests to validate the submitted code by linting, testing and building the application. CD is only run on releases / whenever code is pushed to the `main` branch and release drafts are automatically opened.
+CI/CD is handled by GitHub Actions. You can find it's configuration files inside `.github/workflows`. CI is mainly run on pull requests to validate the submitted code by testing and building the application. CD is only run on releases / whenever code is pushed to the `main` branch and release drafts are automatically opened.

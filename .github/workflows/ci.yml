@@ -8,23 +8,6 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  lint:
-    name: Lint
-    timeout-minutes: 15
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
-
-      - name: Lint Code
-        uses: github/super-linter/slim@v4
-        env:
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   test:
     name: Test
     timeout-minutes: 15
