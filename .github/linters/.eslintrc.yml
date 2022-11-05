@@ -1,0 +1,10 @@
+parserOptions:
+  tsconfigRootDir: __dirname
+  project:
+    [
+      './apps/client/tsconfig.json',
+      './apps/client-frontend/tsconfig.json',
+      './packages/core/tsconfig.json',
+      './packages/ui/tsconfig.json',
+    ]
+# rules:
