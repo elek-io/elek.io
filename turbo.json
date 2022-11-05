@@ -3,14 +3,19 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": [
+        "./packages/core/dist/**/*",
+        "./packages/ui/dist/**/*",
+        "./apps/client/out/**/*",
+        "./apps/client/static/**/*"
+      ]
     },
     "dev": {
       "cache": false,
       "dependsOn": ["core#build", "ui#build"]
     },
     "test": {
-      "cache": false,
+      "outputs": [],
       "dependsOn": ["ui#build"]
     },
     "clean": {
