@@ -7,4 +7,6 @@ parserOptions:
       './packages/core/tsconfig.json',
       './packages/ui/tsconfig.json',
     ]
-# rules:
+rules:
+  comma-dangle: ['error', 'always']
+  semi: ['error', 'always']
