@@ -24,7 +24,7 @@ This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes th
 |   |   |   Shared config files for typescript and tailwind
 |   |   |   used by all other apps and packages
 |   |   |-- core
-|   |   |   Typescipt library that handles logic of the CMS
+|   |   |   Typescript library that handles logic of the CMS
 |   |   |   like file IO, version control, parsing and building.
 |   |   |   It's used by the Client's Electron main process
 |   |   |-- ui
@@ -32,13 +32,26 @@ This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes th
 |   |   |   used inside client-frontend to render the GUI
 ```
 
-### Develop
+### Contribute / Development
+
+Everybody is welcome to help with this project. From documentation, writing issues, UI/UX suggestions to submitting code.
+
+elek.io gives official team members the ability to run their development environment on [GitHub Codespaces](https://docs.github.com/en/codespaces).
 
 To develop all apps and packages, run the following command:
 
 ```
 pnpm run dev
 ```
+
+This will run all apps and packages in development mode.
+But most of the time you'll probably want to only develop one part at the time, like the UI library. For this run:
+
+```
+pnpm run dev --filter=ui
+```
+
+to only run certain apps and packages. Read more about this at the [Turborepo documentation pages](https://turbo.build/repo/docs/reference/command-line-reference#--filter).
 
 ### Build
 

@@ -6,13 +6,15 @@
       "outputs": [
         "./packages/core/dist/**/*",
         "./packages/ui/dist/**/*",
+        "./apps/client/.webpack/**/*",
+        "./apps/client/.next/**/*",
         "./apps/client/out/**/*",
         "./apps/client/static/**/*"
       ]
     },
     "dev": {
-      "cache": false,
-      "dependsOn": ["core#build", "ui#build"]
+      "dependsOn": ["core#build", "ui#build"],
+      "cache": false
     },
     "test": {
       "outputs": [],
