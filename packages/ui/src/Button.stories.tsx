@@ -7,6 +7,9 @@ import { Button } from './Button';
 export default {
   title: 'Components/Button',
   component: Button,
+  argTypes: {
+    onClick: { action: 'clicked' },
+  },
 } as ComponentMeta<typeof Button>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
@@ -23,6 +26,21 @@ Primary.args = {
 export const Secondary = Template.bind({});
 Secondary.args = {
   intent: 'secondary',
+};
+
+export const Link = Template.bind({});
+Link.args = {
+  intent: 'link',
+};
+
+export const Success = Template.bind({});
+Success.args = {
+  intent: 'success',
+};
+
+export const Warning = Template.bind({});
+Warning.args = {
+  intent: 'warning',
 };
 
 export const Danger = Template.bind({});
