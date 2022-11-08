@@ -1,0 +1,83 @@
+name: CD
+
+on:
+  push:
+    branches: ['main']
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Publish new release
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [16.x]
+    runs-on: ${{ matrix.platform }}
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.3
+        with:
+          version: 6
+
+      - name: Setup Node.js ${{ matrix.node-version }} environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      - uses: release-drafter/release-drafter@v5
+        with:
+          config-name: release-drafter.config.yml
+          disable-autolabeler: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload .deb artifact for Debian based Linux distributions
+        if: ${{ matrix.platform == 'ubuntu-latest' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: elek.io Client (.deb)
+          path: apps/client/out/make/deb/x64/*.deb
+          if-no-files-found: error
+
+      - name: Upload .rpm artifact for Redhat based Linux distributions
+        if: ${{ matrix.platform == 'ubuntu-latest' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: elek.io Client (.rpm)
+          path: apps/client/out/make/rpm/x64/*.rpm
+          if-no-files-found: error
+
+      - name: Upload .dmg artifact for macOS
+        if: ${{ matrix.platform == 'macos-latest' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: elek.io Client (.dmg)
+          path: apps/client/out/make/*.dmg
+          if-no-files-found: error
+
+      - name: Upload .exe artifact for Windows
+        if: ${{ matrix.platform == 'windows-latest' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: elek.io Client (.exe)
+          path: apps/client/out/make/squirrel.windows/x64/*.exe
+          if-no-files-found: error

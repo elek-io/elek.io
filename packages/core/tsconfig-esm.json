@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",                                  /* Specify what module code is generated. */
+    "target": "ESNext",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "outDir": "./dist/esm",                              /* Specify an output folder for all emitted files. */
+  }
+}
