@@ -8,7 +8,8 @@ export default {
   title: 'Components/Button',
   component: Button,
   argTypes: {
-    onClick: { action: 'clicked' },
+    intent: { control: 'radio' },
+    fullWidth: { control: 'boolean' },
   },
 } as ComponentMeta<typeof Button>;
 
@@ -46,9 +47,4 @@ Warning.args = {
 export const Danger = Template.bind({});
 Danger.args = {
   intent: 'danger',
-};
-
-export const FullWidth = Template.bind({});
-FullWidth.args = {
-  fullWidth: true,
 };
