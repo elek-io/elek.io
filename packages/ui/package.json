@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsc && tailwindcss -i ./src/styles.css -o ./dist/styles.css",
+    "build": "pnpm run clean && tsc && tailwindcss -i ./src/styles.css -o ./dist/styles.css",
     "dev": "start-storybook -p 3003",
     "clean": "rm -rf ./dist"
   },
