@@ -1,0 +1,28 @@
+{
+  "name": "elek.io",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "dev:ui": "pnpm run dev --filter=ui",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test": "turbo run test",
+    "clean": "turbo run clean",
+    "prepare": "husky install",
+    "publish": "turbo run publish"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "turbo": "^1.4.5",
+    "husky": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "packageManager": "pnpm@7.10.0"
+}
