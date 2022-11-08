@@ -7,10 +7,10 @@ const styles = cva(
     variants: {
       intent: {
         primary:
-          'bg-indigo-600 hover:bg-indigo-700 text-white focus:ring-indigo-500',
+          'bg-brand-600 hover:bg-brand-700 text-white focus:ring-brand-500',
         secondary:
-          'bg-white hover:bg-gray-50 text-gray-700 focus:ring-indigo-500 border-gray-300',
-        link: 'bg-transparent shadow-none text-indigo-600 hover:text-indigo-700 underline',
+          'bg-white hover:bg-gray-50 text-gray-700 focus:ring-brand-500 border-gray-300',
+        link: 'bg-transparent shadow-none text-brand-600 hover:text-brand-700 underline',
         success:
           'bg-green-700 hover:bg-green-800 text-white focus:ring-green-700',
         warning:
