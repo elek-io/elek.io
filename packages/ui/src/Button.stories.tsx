@@ -9,7 +9,10 @@ export default {
   component: Button,
   argTypes: {
     intent: { control: 'radio' },
-    fullWidth: { control: 'boolean' },
+    fullWidth: { control: 'boolean', defaultValue: false },
+    state: {
+      defaultValue: null,
+    },
   },
 } as ComponentMeta<typeof Button>;
 
