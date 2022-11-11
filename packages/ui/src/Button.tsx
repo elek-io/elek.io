@@ -1,9 +1,9 @@
 import { cva, VariantProps } from 'class-variance-authority';
-import { MouseEventHandler, ReactElement, ReactNode } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 import { ArrowPathIcon } from '@heroicons/react/20/solid';
 
 const styles = cva(
-  'inline-flex items-center justify-center rounded-md border border-transparent px-4 py-2 text-base font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60',
+  'inline-flex items-center justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60',
   {
     variants: {
       intent: {
@@ -27,6 +27,11 @@ const styles = cva(
         true: 'w-full',
       },
     },
+    defaultVariants: {
+      intent: 'primary',
+      state: null,
+      fullWidth: false,
+    },
   }
 );
 
@@ -40,19 +45,18 @@ export function Button({
   fullWidth,
   state,
   children,
-  ...props
+  onClick,
 }: ButtonProps) {
   return (
     <button
       type="button"
-      onClick={props.onClick}
+      onClick={onClick}
       className={styles({ intent, fullWidth, state })}
       disabled={state === 'loading' || state === 'disabled' ? true : false}
-      {...props}
     >
       {state === 'loading' ? (
         <ArrowPathIcon
-          className="mr-2 h-5 w-5 animate-spin"
+          className="-ml-1 mr-2 h-5 w-5 animate-spin"
           aria-hidden="true"
         />
       ) : (
