@@ -170,6 +170,7 @@ importers:
       '@types/react-dom': ^18.0.6
       autoprefixer: ^10.4.12
       babel-loader: ^8.2.5
+      chromatic: ^6.11.4
       class-variance-authority: ^0.2.4
       config: workspace:*
       postcss: ^8.4.18
@@ -197,6 +198,7 @@ importers:
       '@types/react-dom': 18.0.6
       autoprefixer: 10.4.12_postcss@8.4.18
       babel-loader: 8.2.5_@babel+core@7.19.6
+      chromatic: 6.11.4
       config: link:../config
       postcss: 8.4.18
       postcss-loader: 7.0.1_postcss@8.4.18
@@ -6523,6 +6525,14 @@ packages:
   /chownr/2.0.0:
     resolution: {integrity: sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==}
     engines: {node: '>=10'}
+
+  /chromatic/6.11.4:
+    resolution: {integrity: sha512-f1TcuIXKjGUuOjPuwFF44kzbuEcESFcDxHzrzWPLmHuC90dV8HLxbufqYaTOBYMO/rJ32Zftb7S9pXuF/Rhfog==}
+    hasBin: true
+    dependencies:
+      '@discoveryjs/json-ext': 0.5.7
+      '@types/webpack-env': 1.18.0
+    dev: true
 
   /chrome-trace-event/1.0.3:
     resolution: {integrity: sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==}

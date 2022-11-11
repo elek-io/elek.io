@@ -11,7 +11,9 @@
   "scripts": {
     "build": "pnpm run clean && tsc && tailwindcss -i ./src/styles.css -o ./dist/styles.css",
     "dev": "start-storybook -p 3003",
-    "clean": "rm -rf ./dist"
+    "clean": "rm -rf ./dist",
+    "build-storybook": "build-storybook",
+    "publish": "pnpx chromatic --project-token=2db77d6b5d7e"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
@@ -28,6 +30,7 @@
     "@types/react-dom": "^18.0.6",
     "autoprefixer": "^10.4.12",
     "babel-loader": "^8.2.5",
+    "chromatic": "^6.11.4",
     "config": "workspace:*",
     "postcss": "^8.4.18",
     "postcss-loader": "^7.0.1",
@@ -40,5 +43,7 @@
     "@headlessui/react": "^1.6.6",
     "@heroicons/react": "^2.0.10",
     "class-variance-authority": "^0.2.4"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "ui@0.0.0"
 }
