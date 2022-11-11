@@ -1,6 +1,9 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
+    "publish": {
+      "outputs": []
+    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": [

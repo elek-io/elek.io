@@ -13,7 +13,8 @@
     "dev": "start-storybook -p 3003",
     "clean": "rm -rf ./dist",
     "build-storybook": "build-storybook",
-    "publish": "pnpx chromatic --project-token=2db77d6b5d7e"
+    "publish": "pnpm run chromatic",
+    "chromatic": "chromatic --exit-zero-on-changes --project-token=2db77d6b5d7e"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
