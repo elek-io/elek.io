@@ -1,4 +1,5 @@
 import './styles.css';
 
+export * from './Avatar';
 export * from './Button';
-export * from './Dropdown';
+export * from './ButtonDropdown';
