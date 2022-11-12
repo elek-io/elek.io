@@ -1,5 +1,5 @@
 import './styles.css';
 
-export * from './Avatar';
-export * from './Button';
-export * from './ButtonDropdown';
+export * from './components/Avatar';
+export * from './components/Button';
+export * from './components/ButtonDropdown';
