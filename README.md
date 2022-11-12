@@ -3,7 +3,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/01462e6a23d258bea092/maintainability)](https://codeclimate.com/github/elek-io/elek.io/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/01462e6a23d258bea092/test_coverage)](https://codeclimate.com/github/elek-io/elek.io/test_coverage)
 
-This is a monorepo for all public elek.io code, including an UI library and design system, a Core library that handles logic of the CMS, a Next.js Client Frontend that represents the Clients GUI and the Client itself, which uses all of it and combines it into one electron application.
+This is a monorepo for all public elek.io code, including an [UI library and design system](packages/ui/), a [Core library](packages/core/) that handles logic of the CMS, a [Next.js Client Frontend](apps/client-frontend/) that represents the Clients GUI and [the Client itself](apps/client/), which uses all of it and combines it into one electron application.
 
 ## What's inside?
 
@@ -60,6 +60,8 @@ To build all apps and packages, run the following command:
 ```
 pnpm run build
 ```
+
+The filter argument is available like above to only build certain parts.
 
 ### CI/CD
 
