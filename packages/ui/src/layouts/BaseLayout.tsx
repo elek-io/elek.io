@@ -5,26 +5,40 @@ import {
   Bars3BottomLeftIcon,
   CogIcon,
   HomeIcon,
-  PhotoIcon,
   PlusIcon,
-  RectangleStackIcon,
-  Squares2X2Icon,
   UserGroupIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import {
+  CalendarIcon,
+  MagnifyingGlassCircleIcon,
+  MagnifyingGlassIcon,
+  MapIcon,
+  MegaphoneIcon,
+  SquaresPlusIcon,
+} from '@heroicons/react/20/solid';
 
-const sidebarNavigation = [
-  { name: 'Home', href: '#', icon: HomeIcon, current: false },
-  { name: 'All Files', href: '#', icon: Squares2X2Icon, current: false },
-  { name: 'Photos', href: '#', icon: PhotoIcon, current: true },
-  { name: 'Shared', href: '#', icon: UserGroupIcon, current: false },
-  { name: 'Albums', href: '#', icon: RectangleStackIcon, current: false },
-  { name: 'Settings', href: '#', icon: CogIcon, current: false },
+const user = {
+  name: 'Tom Cook',
+  imageUrl:
+    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+};
+const navigation = [
+  { name: 'Dashboard', href: '#', icon: HomeIcon, current: false },
+  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
+  { name: 'Teams', href: '#', icon: UserGroupIcon, current: false },
+  {
+    name: 'Directory',
+    href: '#',
+    icon: MagnifyingGlassCircleIcon,
+    current: true,
+  },
+  { name: 'Announcements', href: '#', icon: MegaphoneIcon, current: false },
+  { name: 'Office Map', href: '#', icon: MapIcon, current: false },
 ];
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Sign out', href: '#' },
+const secondaryNavigation = [
+  { name: 'Apps', href: '#', icon: SquaresPlusIcon },
+  { name: 'Settings', href: '#', icon: CogIcon },
 ];
 
 function classNames(...classes: string[]) {
@@ -58,55 +72,15 @@ const styles = cva(
 export interface BaseLayoutProps extends VariantProps<typeof styles> {}
 
 export function BaseLayout({}: BaseLayoutProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="flex h-full w-full">
-      {/* Narrow sidebar */}
-      <div className="hidden w-28 overflow-y-auto bg-indigo-700 md:block">
-        <div className="flex w-full flex-col items-center py-6">
-          <div className="flex flex-shrink-0 items-center">
-            <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=white"
-              alt="Your Company"
-            />
-          </div>
-          <div className="mt-6 w-full flex-1 space-y-1 px-2">
-            {sidebarNavigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className={classNames(
-                  item.current
-                    ? 'bg-indigo-800 text-white'
-                    : 'text-indigo-100 hover:bg-indigo-800 hover:text-white',
-                  'group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium'
-                )}
-                aria-current={item.current ? 'page' : undefined}
-              >
-                <item.icon
-                  className={classNames(
-                    item.current
-                      ? 'text-white'
-                      : 'text-indigo-300 group-hover:text-white',
-                    'h-6 w-6'
-                  )}
-                  aria-hidden="true"
-                />
-                <span className="mt-2">{item.name}</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      <Transition.Root show={mobileMenuOpen} as={Fragment}>
+      <Transition.Root show={sidebarOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="relative z-20 md:hidden"
-          onClose={setMobileMenuOpen}
+          className="relative z-40 lg:hidden"
+          onClose={setSidebarOpen}
         >
           <Transition.Child
             as={Fragment}
@@ -130,7 +104,7 @@ export function BaseLayout({}: BaseLayoutProps) {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-indigo-700 pt-5 pb-4">
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-white focus:outline-none">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -140,65 +114,191 @@ export function BaseLayout({}: BaseLayoutProps) {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <div className="absolute top-1 right-0 -mr-14 p-1">
+                  <div className="absolute top-0 right-0 -mr-12 pt-2">
                     <button
                       type="button"
-                      className="flex h-12 w-12 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-white"
-                      onClick={() => setMobileMenuOpen(false)}
+                      className="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                      onClick={() => setSidebarOpen(false)}
                     >
+                      <span className="sr-only">Close sidebar</span>
                       <XMarkIcon
                         className="h-6 w-6 text-white"
                         aria-hidden="true"
                       />
-                      <span className="sr-only">Close sidebar</span>
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="flex flex-shrink-0 items-center px-4">
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=white"
-                    alt="Your Company"
-                  />
-                </div>
-                <div className="mt-5 h-0 flex-1 overflow-y-auto px-2">
-                  <nav className="flex h-full flex-col">
-                    <div className="space-y-1">
-                      {sidebarNavigation.map((item) => (
+                <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
+                  <div className="flex flex-shrink-0 items-center px-4">
+                    <img
+                      className="h-8 w-auto"
+                      src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=500"
+                      alt="Your Company"
+                    />
+                  </div>
+                  <nav aria-label="Sidebar" className="mt-5">
+                    <div className="space-y-1 px-2">
+                      {navigation.map((item) => (
                         <a
                           key={item.name}
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? 'bg-indigo-800 text-white'
-                              : 'text-indigo-100 hover:bg-indigo-800 hover:text-white',
-                            'group py-2 px-3 rounded-md flex items-center text-sm font-medium'
+                              ? 'bg-gray-200 text-gray-900'
+                              : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                            'group flex items-center px-2 py-2 text-base font-medium rounded-md'
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
                           <item.icon
                             className={classNames(
                               item.current
-                                ? 'text-white'
-                                : 'text-indigo-300 group-hover:text-white',
-                              'mr-3 h-6 w-6'
+                                ? 'text-gray-500'
+                                : 'text-gray-400 group-hover:text-gray-500',
+                              'mr-4 h-6 w-6'
                             )}
                             aria-hidden="true"
                           />
-                          <span>{item.name}</span>
+                          {item.name}
+                        </a>
+                      ))}
+                    </div>
+                    <hr
+                      className="my-5 border-t border-gray-200"
+                      aria-hidden="true"
+                    />
+                    <div className="space-y-1 px-2">
+                      {secondaryNavigation.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="group flex items-center rounded-md px-2 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                        >
+                          <item.icon
+                            className="mr-4 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                            aria-hidden="true"
+                          />
+                          {item.name}
                         </a>
                       ))}
                     </div>
                   </nav>
                 </div>
+                <div className="flex flex-shrink-0 border-t border-gray-200 p-4">
+                  <a href="#" className="group block flex-shrink-0">
+                    <div className="flex items-center">
+                      <div>
+                        <img
+                          className="inline-block h-10 w-10 rounded-full"
+                          src={user.imageUrl}
+                          alt=""
+                        />
+                      </div>
+                      <div className="ml-3">
+                        <p className="text-base font-medium text-gray-700 group-hover:text-gray-900">
+                          {user.name}
+                        </p>
+                        <p className="text-sm font-medium text-gray-500 group-hover:text-gray-700">
+                          View profile
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
               </Dialog.Panel>
             </Transition.Child>
             <div className="w-14 flex-shrink-0" aria-hidden="true">
-              {/* Dummy element to force sidebar to shrink to fit close icon */}
+              {/* Force sidebar to shrink to fit close icon */}
             </div>
           </div>
         </Dialog>
       </Transition.Root>
+
+      {/* Static sidebar for desktop */}
+      <div className="hidden lg:flex lg:flex-shrink-0">
+        <div className="flex w-64 flex-col">
+          {/* Sidebar component, swap this element with another sidebar if you like */}
+          <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white">
+            <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
+              <div className="flex flex-shrink-0 items-center px-4">
+                <img
+                  className="h-8 w-auto"
+                  src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=500"
+                  alt="Your Company"
+                />
+              </div>
+              <nav className="mt-5 flex-1" aria-label="Sidebar">
+                <div className="space-y-1 px-2">
+                  {navigation.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className={classNames(
+                        item.current
+                          ? 'bg-gray-200 text-gray-900'
+                          : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                        'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
+                      )}
+                      aria-current={item.current ? 'page' : undefined}
+                    >
+                      <item.icon
+                        className={classNames(
+                          item.current
+                            ? 'text-gray-500'
+                            : 'text-gray-400 group-hover:text-gray-500',
+                          'mr-3 flex-shrink-0 h-6 w-6'
+                        )}
+                        aria-hidden="true"
+                      />
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
+                <hr
+                  className="my-5 border-t border-gray-200"
+                  aria-hidden="true"
+                />
+                <div className="flex-1 space-y-1 px-2">
+                  {secondaryNavigation.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="group flex items-center rounded-md px-2 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    >
+                      <item.icon
+                        className="mr-3 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                        aria-hidden="true"
+                      />
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
+              </nav>
+            </div>
+            <div className="flex flex-shrink-0 border-t border-gray-200 p-4">
+              <a href="#" className="group block w-full flex-shrink-0">
+                <div className="flex items-center">
+                  <div>
+                    <img
+                      className="inline-block h-9 w-9 rounded-full"
+                      src={user.imageUrl}
+                      alt=""
+                    />
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                      {user.name}
+                    </p>
+                    <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
+                      View profile
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Content area */}
       <div className="flex flex-1 flex-col overflow-hidden">
@@ -206,8 +306,8 @@ export function BaseLayout({}: BaseLayoutProps) {
           <div className="relative z-10 flex h-16 flex-shrink-0 border-b border-gray-200 bg-white shadow-sm">
             <button
               type="button"
-              className="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
-              onClick={() => setMobileMenuOpen(true)}
+              className="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-500 lg:hidden"
+              onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
               <Bars3BottomLeftIcon className="h-6 w-6" aria-hidden="true" />
@@ -239,7 +339,7 @@ export function BaseLayout({}: BaseLayoutProps) {
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative flex-shrink-0">
                   <div>
-                    <Menu.Button className="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <Menu.Button className="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
@@ -258,13 +358,13 @@ export function BaseLayout({}: BaseLayoutProps) {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      {userNavigation.map((item) => (
+                      {navigation.map((item) => (
                         <Menu.Item key={item.name}>
                           {({ active }) => (
                             <a
                               href={item.href}
                               className={classNames(
-                                active ? 'bg-gray-100' : '',
+                                active ? 'bg-brand-600' : '',
                                 'block px-4 py-2 text-sm text-gray-700'
                               )}
                             >
@@ -279,7 +379,7 @@ export function BaseLayout({}: BaseLayoutProps) {
 
                 <button
                   type="button"
-                  className="flex items-center justify-center rounded-full bg-indigo-600 p-1 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  className="flex items-center justify-center rounded-full bg-brand-600 p-1 text-white hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
                 >
                   <PlusIcon className="h-6 w-6" aria-hidden="true" />
                   <span className="sr-only">Add file</span>
