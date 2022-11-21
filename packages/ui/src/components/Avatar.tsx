@@ -34,15 +34,12 @@ function getInitials(name: string) {
   ).toUpperCase();
 }
 
+// @todo why is the Avatar size 36x36 px but buttons 38x38px?
 export function Avatar(props: AvatarProps) {
   return (
-    <span className="relative inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-500">
+    <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-500">
       {props.src ? (
-        <img
-          className="h-8 w-8 rounded-full"
-          src={props.src}
-          alt={props.name}
-        />
+        <img className="rounded-full" src={props.src} alt={props.name} />
       ) : (
         <span className="text-sm font-medium leading-none text-white">
           {getInitials(props.name)}

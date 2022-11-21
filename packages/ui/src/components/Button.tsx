@@ -17,6 +17,8 @@ const styles = cva(
           'button-intent-warning bg-yellow-400 hover:bg-yellow-500 text-gray-700 focus:ring-yellow-400',
         danger:
           'button-intent-danger bg-red-600 hover:bg-red-700 text-white focus:ring-red-600',
+        icon: 'shadow-none !rounded-full px-2 py-2',
+        avatar: 'shadow-none !rounded-full px-0 py-0',
       },
       state: {
         loading: 'state-loading disabled:cursor-wait',
@@ -36,7 +38,7 @@ const styles = cva(
 );
 
 export interface ButtonProps extends VariantProps<typeof styles> {
-  children: ReactNode;
+  children?: ReactNode;
   prependIcon?: (props: React.ComponentProps<'svg'>) => JSX.Element;
   appendIcon?: (props: React.ComponentProps<'svg'>) => JSX.Element;
   onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -56,6 +58,7 @@ export function Button(props: ButtonProps) {
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
+          aria-hidden="true"
         >
           <circle
             className="opacity-25"

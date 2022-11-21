@@ -1,7 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { HeartIcon } from '@heroicons/react/20/solid';
+import { EllipsisVerticalIcon, HeartIcon } from '@heroicons/react/20/solid';
 import { Button } from './Button';
+import { Avatar } from './Avatar';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -17,6 +18,16 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Button> = (args) => (
   <Button {...args}>Button</Button>
+);
+const AvatarTemplate: ComponentStory<typeof Button> = (args) => (
+  <Button {...args}>
+    <Avatar name="John Doe"></Avatar>
+  </Button>
+);
+const IconTemplate: ComponentStory<typeof Button> = (args) => (
+  <Button {...args}>
+    <EllipsisVerticalIcon className="h-5 w-5"></EllipsisVerticalIcon>
+  </Button>
 );
 
 export const Primary = Template.bind({});
@@ -60,4 +71,14 @@ export const AppendIcon = Template.bind({});
 AppendIcon.args = {
   intent: 'secondary',
   appendIcon: HeartIcon,
+};
+
+export const WithIcon = IconTemplate.bind({});
+WithIcon.args = {
+  intent: 'icon',
+};
+
+export const WithAvatar = AvatarTemplate.bind({});
+WithAvatar.args = {
+  intent: 'avatar',
 };
