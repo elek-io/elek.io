@@ -19,6 +19,7 @@ import {
   SquaresPlusIcon,
 } from '@heroicons/react/20/solid';
 import { Dropdown, itemGroupsExample } from '../components/Dropdown';
+import { Button } from '../components/Button';
 
 const user = {
   name: 'Tom Cook',
@@ -224,7 +225,7 @@ export function BaseLayout({}: BaseLayoutProps) {
                 </span>
                 <div>
                   <Dropdown itemGroups={itemGroupsExample}>
-                    Hello World!
+                    <Button>Hello World!</Button>
                   </Dropdown>
                 </div>
               </div>

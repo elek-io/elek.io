@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
+import { HeartIcon } from '@heroicons/react/20/solid';
 import { Button } from './Button';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -48,4 +48,16 @@ Warning.args = {
 export const Danger = Template.bind({});
 Danger.args = {
   intent: 'danger',
+};
+
+export const PrependIcon = Template.bind({});
+PrependIcon.args = {
+  intent: 'secondary',
+  prependIcon: HeartIcon,
+};
+
+export const AppendIcon = Template.bind({});
+AppendIcon.args = {
+  intent: 'secondary',
+  appendIcon: HeartIcon,
 };
