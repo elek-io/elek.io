@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { Dropdown, itemGroupsExample } from './Dropdown';
 import { Button } from './Button';
 import { Avatar } from './Avatar';
@@ -18,7 +19,7 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const TemplateWithButton: ComponentStory<typeof Dropdown> = (args) => (
   <Dropdown {...args} itemGroups={itemGroupsExample}>
-    <Button>Dropdown</Button>
+    <Button appendIcon={ChevronDownIcon}>Dropdown</Button>
   </Dropdown>
 );
 const TemplateWithAvatar: ComponentStory<typeof Dropdown> = (args) => (
