@@ -8,6 +8,7 @@ import {
   PlusIcon,
   UserGroupIcon,
   XMarkIcon,
+  RectangleStackIcon,
 } from '@heroicons/react/24/outline';
 import {
   CalendarIcon,
@@ -17,6 +18,7 @@ import {
   MegaphoneIcon,
   SquaresPlusIcon,
 } from '@heroicons/react/20/solid';
+import { Dropdown, itemGroupsExample } from '../components/Dropdown';
 
 const user = {
   name: 'Tom Cook',
@@ -130,11 +132,7 @@ export function BaseLayout({}: BaseLayoutProps) {
                 </Transition.Child>
                 <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
                   <div className="flex flex-shrink-0 items-center px-4">
-                    <img
-                      className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=500"
-                      alt="Your Company"
-                    />
+                    elek.io
                   </div>
                   <nav aria-label="Sidebar" className="mt-5">
                     <div className="space-y-1 px-2">
@@ -220,12 +218,15 @@ export function BaseLayout({}: BaseLayoutProps) {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white">
             <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
-              <div className="flex flex-shrink-0 items-center px-4">
-                <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=500"
-                  alt="Your Company"
-                />
+              <div className="flex flex-shrink-0 flex-col px-4">
+                <span className="text-xl font-bold text-brand-600 d-block">
+                  elek.io
+                </span>
+                <div>
+                  <Dropdown itemGroups={itemGroupsExample}>
+                    Hello World!
+                  </Dropdown>
+                </div>
               </div>
               <nav className="mt-5 flex-1" aria-label="Sidebar">
                 <div className="space-y-1 px-2">
@@ -275,19 +276,15 @@ export function BaseLayout({}: BaseLayoutProps) {
                 </div>
               </nav>
             </div>
-            <div className="flex flex-shrink-0 border-t border-gray-200 p-4">
+            <div className="flex flex-shrink-0 border-t border-gray-200 bg-gray-50 p-4">
               <a href="#" className="group block w-full flex-shrink-0">
                 <div className="flex items-center">
                   <div>
-                    <img
-                      className="inline-block h-9 w-9 rounded-full"
-                      src={user.imageUrl}
-                      alt=""
-                    />
+                    <RectangleStackIcon className="w-8 h-8" />
                   </div>
                   <div className="ml-3">
                     <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                      {user.name}
+                      Project #1
                     </p>
                     <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
                       View profile

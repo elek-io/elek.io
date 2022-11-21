@@ -2,4 +2,4 @@ import './styles.css';
 
 export * from './components/Avatar';
 export * from './components/Button';
-export * from './components/ButtonDropdown';
+export * from './components/Dropdown';
