@@ -25,10 +25,11 @@ const styles = cva(
       },
       fullWidth: {
         true: 'w-full',
+        false: '',
       },
     },
     defaultVariants: {
-      intent: 'primary',
+      intent: 'secondary',
       state: null,
       fullWidth: false,
     },
@@ -52,7 +53,7 @@ export function Button({
       type="button"
       onClick={onClick}
       className={styles({ intent, fullWidth, state })}
-      disabled={state === 'loading' || state === 'disabled' ? true : false}
+      disabled={state === 'loading' || state === 'disabled'}
     >
       {state === 'loading' ? (
         <ArrowPathIcon

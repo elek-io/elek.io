@@ -17,6 +17,9 @@ export default {
   title: 'Components/Button Dropdown',
   component: ButtonDropdown,
   argTypes: {
+    intent: { control: 'radio', defaultValue: 'secondary' },
+    fullWidth: { control: 'boolean', defaultValue: false },
+    state: { defaultValue: null },
     label: {
       defaultValue: 'Dropdown',
     },

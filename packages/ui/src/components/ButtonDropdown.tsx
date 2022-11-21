@@ -2,20 +2,41 @@ import { cva, VariantProps } from 'class-variance-authority';
 import { Fragment, ReactNode } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { Menu, Transition } from '@headlessui/react';
-import { Button } from './Button';
+import { Button, ButtonProps } from './Button';
 
-const styles = cva();
+const styles = cva('relative inline-block text-left', {
+  variants: {
+    fullWidth: {
+      true: 'w-full',
+      false: '',
+    },
+  },
+  defaultVariants: {
+    fullWidth: false,
+  },
+});
 
-export interface ButtonDropdownProps extends VariantProps<typeof styles> {
+export interface ButtonDropdownProps extends Omit<ButtonProps, 'onClick'> {
   label: string;
   children: ReactNode;
 }
 
-export function ButtonDropdown({ label, children }: ButtonDropdownProps) {
+export function ButtonDropdown({
+  label,
+  intent,
+  fullWidth,
+  state,
+  children,
+}: ButtonDropdownProps) {
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    <Menu as="div" className={styles({ fullWidth })}>
       <div>
-        <Menu.Button as={Button} intent="secondary">
+        <Menu.Button
+          as={Button}
+          fullWidth={fullWidth}
+          intent={intent}
+          state={state}
+        >
           {label}
           <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
         </Menu.Button>
