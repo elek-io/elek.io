@@ -12,11 +12,7 @@ import { Avatar } from './Avatar';
 export default {
   title: 'Components/Dropdown',
   component: Dropdown,
-  argTypes: {
-    items: {
-      defaultValue: itemGroupsExample,
-    },
-  },
+  argTypes: {},
 } as ComponentMeta<typeof Dropdown>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
