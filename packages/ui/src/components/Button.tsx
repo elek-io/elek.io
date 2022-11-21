@@ -82,7 +82,9 @@ export function Button(props: ButtonProps) {
       ) : (
         ''
       )}
-      {props.children}
+      {props.state === 'loading' && props.intent === 'icon'
+        ? ''
+        : props.children}
       {props.appendIcon ? (
         <props.appendIcon className="ml-2 -mr-1 h-5 w-5" aria-hidden="true" />
       ) : (
