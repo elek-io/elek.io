@@ -1,10 +1,29 @@
 import { cva, VariantProps } from 'class-variance-authority';
 
-const styles = cva();
+const styles = cva('', {
+  variants: {
+    status: {
+      available: 'bg-green-500',
+      busy: 'bg-red-600',
+      dnd: 'bg-red-600',
+      brb: 'bg-yellow-500',
+      away: 'bg-yellow-500',
+      offline: 'bg-gray-300',
+      null: 'hidden',
+    },
+  },
+  defaultVariants: {
+    status: 'available',
+  },
+});
 
 export interface AvatarProps extends VariantProps<typeof styles> {
   name: string;
   src?: string;
+}
+
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(' ');
 }
 
 function getInitials(name: string) {
@@ -16,22 +35,30 @@ function getInitials(name: string) {
   ).toUpperCase();
 }
 
-export function Avatar({ name, src }: AvatarProps) {
-  if (src) {
-    return (
-      <span className="relative inline-flex">
-        <img className="h-12 w-12 rounded-full" src={src} alt={name} />
-        <span className="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-gray-300 ring-2 ring-white" />
-      </span>
-    );
-  } else {
-    return (
-      <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-full bg-gray-500">
-        <span className="text-lg font-medium leading-none text-white">
-          {getInitials(name)}
+export function Avatar(props: AvatarProps) {
+  return (
+    <span className="relative inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-500">
+      {props.src ? (
+        <img
+          className="h-8 w-8 rounded-full"
+          src={props.src}
+          alt={props.name}
+        />
+      ) : (
+        <span className="text-sm font-medium leading-none text-white">
+          {getInitials(props.name)}
         </span>
-        <span className="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-gray-300 ring-2 ring-white" />
-      </span>
-    );
-  }
+      )}
+      {props.status ? (
+        <span
+          className={classNames(
+            'absolute bottom-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white',
+            styles({ status: props.status })
+          )}
+        />
+      ) : (
+        ''
+      )}
+    </span>
+  );
 }
