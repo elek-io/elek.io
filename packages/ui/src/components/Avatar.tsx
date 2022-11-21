@@ -9,11 +9,10 @@ const styles = cva('', {
       brb: 'bg-yellow-500',
       away: 'bg-yellow-500',
       offline: 'bg-gray-300',
-      null: 'hidden',
     },
   },
   defaultVariants: {
-    status: 'available',
+    status: 'offline',
   },
 });
 

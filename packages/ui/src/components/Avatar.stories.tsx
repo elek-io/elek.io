@@ -7,6 +7,9 @@ import { Avatar } from './Avatar';
 export default {
   title: 'Components/Avatar',
   component: Avatar,
+  argTypes: {
+    status: { defaultValue: 'offline' },
+  },
 } as ComponentMeta<typeof Avatar>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
@@ -19,12 +22,10 @@ export const Image = Template.bind({});
 Image.args = {
   name: 'John Doe',
   src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  status: 'available',
 };
 
 export const Initials = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Initials.args = {
   name: 'John Doe',
-  status: 'available',
 };
