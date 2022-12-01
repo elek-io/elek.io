@@ -1,7 +1,7 @@
 import { Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 import { cva, VariantProps } from 'class-variance-authority';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 
 const styles = cva('', {
   variants: {
@@ -16,17 +16,17 @@ const styles = cva('', {
 });
 
 export interface NotificationProps extends VariantProps<typeof styles> {
-  isVisible: boolean;
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
   icon: (props: React.ComponentProps<'svg'>) => JSX.Element;
   title: string;
   description: string;
 }
 
 export function Notification(props: NotificationProps) {
+  const [isVisible, setVisible] = useState(true);
+
   return (
     <Transition
-      show={props.isVisible}
+      show={isVisible}
       as={Fragment}
       enter="transform ease-out duration-300 transition"
       enterFrom="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
@@ -67,7 +67,7 @@ export function Notification(props: NotificationProps) {
                 type="button"
                 className="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 onClick={() => {
-                  props.setVisible(false);
+                  setVisible(false);
                 }}
               >
                 <span className="sr-only">Close</span>

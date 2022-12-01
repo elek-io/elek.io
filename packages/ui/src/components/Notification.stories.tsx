@@ -1,26 +1,28 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Notification } from './Notification';
+import { NotificationContainer } from './NotificationContainer';
+import { CheckCircleIcon } from '@heroicons/react/20/solid';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Components/Notification',
-  component: Notification,
+  component: NotificationContainer,
   argTypes: {
-    isVisible: { control: 'boolean', defaultValue: true },
+    notifications: {
+      defaultValue: [
+        {
+          icon: CheckCircleIcon,
+          title: 'Created Page',
+          description: 'Successfully created a new page',
+        },
+      ],
+    },
   },
-} as ComponentMeta<typeof Notification>;
+} as ComponentMeta<typeof NotificationContainer>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Notification> = (args) => (
-  <div
-    aria-live="assertive"
-    className="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6"
-  >
-    <div className="flex w-full flex-col items-center space-y-4 sm:items-end">
-      <Notification {...args}></Notification>
-    </div>
-  </div>
+const Template: ComponentStory<typeof NotificationContainer> = (args) => (
+  <NotificationContainer {...args}></NotificationContainer>
 );
 
 export const Light = Template.bind({});
