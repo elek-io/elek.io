@@ -1,19 +1,21 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { navigationExample, Sidebar } from './Sidebar';
+import { Page } from './Page';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/Sidebar',
-  component: Sidebar,
-  argTypes: {
-    isOpen: { control: 'boolean', defaultValue: false },
-  },
-} as ComponentMeta<typeof Sidebar>;
+  title: 'Components/Page',
+  component: Page,
+  argTypes: {},
+} as ComponentMeta<typeof Page>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Sidebar> = (args) => (
-  <Sidebar {...args} navigation={navigationExample}></Sidebar>
+const Template: ComponentStory<typeof Page> = (args) => (
+  <div className="flex w-full h-full">
+    <div className="flex flex-1 items-stretch overflow-hidden">
+      <Page {...args}></Page>
+    </div>
+  </div>
 );
 
 export const Light = Template.bind({});
