@@ -61,15 +61,7 @@ export interface HeaderProps extends VariantProps<typeof styles> {
 export function Header(props: HeaderProps) {
   return (
     <header className="w-full">
-      <div className="relative z-10 flex h-16 flex-shrink-0 border-b border-gray-200 bg-white shadow-sm">
-        <button
-          type="button"
-          className="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-500 lg:hidden"
-          onClick={() => props.setSidebarOpen(true)}
-        >
-          <span className="sr-only">Open sidebar</span>
-          <Bars3BottomLeftIcon className="h-6 w-6" aria-hidden="true" />
-        </button>
+      <div className="relative z-10 flex h-16 flex-shrink-0 border-t lg:border-t-0 lg:border-b border-gray-200 bg-white shadow-sm">
         <div className="flex flex-1 justify-between px-4 sm:px-6">
           <div className="flex flex-1">
             <form className="flex w-full md:ml-0" action="#" method="GET">
@@ -144,6 +136,14 @@ export function Header(props: HeaderProps) {
             </button>
           </div>
         </div>
+        <button
+          type="button"
+          className="border-l border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-500 lg:hidden"
+          onClick={() => props.setSidebarOpen(true)}
+        >
+          <span className="sr-only">Open sidebar</span>
+          <Bars3BottomLeftIcon className="h-6 w-6" aria-hidden="true" />
+        </button>
       </div>
     </header>
   );
