@@ -148,7 +148,7 @@ export function Sidebar(props: SidebarProps) {
                                 item.current
                                   ? 'bg-gray-200 text-gray-900'
                                   : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                                'group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                                'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
                               )}
                               aria-current={item.current ? 'page' : undefined}
                             >
@@ -226,7 +226,7 @@ export function Sidebar(props: SidebarProps) {
                             item.current
                               ? 'bg-gray-200 text-gray-900'
                               : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                            'group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                            'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
