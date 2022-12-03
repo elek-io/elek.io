@@ -1,25 +1,21 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Page } from './Page';
+import { Slideover } from './Slideover';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/Page',
-  component: Page,
+  title: 'Components/Slideover',
+  component: Slideover,
   argTypes: {
     title: {
-      defaultValue: 'Page title',
+      defaultValue: 'A Slideover',
     },
   },
-} as ComponentMeta<typeof Page>;
+} as ComponentMeta<typeof Slideover>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Page> = (args) => (
-  <div className="flex w-full h-full">
-    <div className="flex flex-1 items-stretch overflow-hidden">
-      <Page {...args}></Page>
-    </div>
-  </div>
+const Template: ComponentStory<typeof Slideover> = (args) => (
+  <Slideover {...args}>Slideover content</Slideover>
 );
 
 export const Light = Template.bind({});

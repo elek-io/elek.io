@@ -41,7 +41,7 @@ export function BaseLayout({}: BaseLayoutProps) {
 
       <div className="flex flex-1 flex-col overflow-hidden lg:flex-col-reverse">
         <div className="flex flex-1 items-stretch overflow-hidden">
-          <Page></Page>
+          <Page title="Page title">Page content</Page>
         </div>
 
         <Header
