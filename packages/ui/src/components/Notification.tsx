@@ -47,20 +47,6 @@ export function Notification(props: NotificationProps) {
             <div className="ml-3 w-0 flex-1 pt-0.5">
               <p className="text-sm font-medium text-gray-900">{props.title}</p>
               <p className="mt-1 text-sm text-gray-500">{props.description}</p>
-              <div className="mt-3 flex space-x-7">
-                <button
-                  type="button"
-                  className="rounded-md bg-white text-sm font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                  Undo
-                </button>
-                <button
-                  type="button"
-                  className="rounded-md bg-white text-sm font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                  Dismiss
-                </button>
-              </div>
             </div>
             <div className="ml-4 flex flex-shrink-0">
               <button
