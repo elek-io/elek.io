@@ -1,6 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { cva, VariantProps } from 'class-variance-authority';
 import { Fragment } from 'react';
+import Link from 'next/link';
 import {
   HomeIcon,
   UserGroupIcon,
@@ -34,25 +35,50 @@ export type SidebarNavigationItem = {
 };
 
 export type SidebarNavigationItemGroup = {
-  name?: '';
+  name?: string;
   items: SidebarNavigationItem[];
 };
 
 export const navigationExample: SidebarNavigationItemGroup[] = [
   {
-    name: '',
+    name: 'sidebar',
     items: [
-      { name: 'Dashboard', href: '#', icon: HomeIcon, current: false },
-      { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-      { name: 'Teams', href: '#', icon: UserGroupIcon, current: false },
+      {
+        name: 'Dashboard',
+        href: '/',
+        icon: HomeIcon,
+        current: false,
+      },
+      {
+        name: 'Calendar',
+        href: '/',
+        icon: CalendarIcon,
+        current: false,
+      },
+      {
+        name: 'Teams',
+        href: '/',
+        icon: UserGroupIcon,
+        current: false,
+      },
       {
         name: 'Directory',
-        href: '#',
+        href: '/',
         icon: MagnifyingGlassCircleIcon,
         current: true,
       },
-      { name: 'Announcements', href: '#', icon: MegaphoneIcon, current: false },
-      { name: 'Office Map', href: '#', icon: MapIcon, current: false },
+      {
+        name: 'Announcements',
+        href: '/',
+        icon: MegaphoneIcon,
+        current: false,
+      },
+      {
+        name: 'Office Map',
+        href: '/',
+        icon: MapIcon,
+        current: false,
+      },
     ],
   },
 ];
@@ -139,52 +165,59 @@ export function Sidebar(props: SidebarProps) {
                           ''
                         )}
 
-                        <div className="space-y-1 px-2">
-                          {group.items.map((item) => (
-                            <a
-                              key={item.name}
-                              href={item.href}
-                              className={classNames(
-                                item.current
-                                  ? 'bg-gray-200 text-gray-900'
-                                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                                'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
-                              )}
-                              aria-current={item.current ? 'page' : undefined}
-                            >
-                              <item.icon
-                                className={classNames(
-                                  item.current
-                                    ? 'text-gray-500'
-                                    : 'text-gray-400 group-hover:text-gray-500',
-                                  'mr-4 h-6 w-6'
-                                )}
-                                aria-hidden="true"
-                              />
-                              {item.name}
-                            </a>
-                          ))}
+                        <div className="space-y-1 px-2" key={group.name}>
+                          {group.items.map((item) => {
+                            return (
+                              <Link href={item.href}>
+                                <a
+                                  key={item.name}
+                                  className={classNames(
+                                    item.current
+                                      ? 'bg-gray-200 text-gray-900'
+                                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
+                                  )}
+                                  aria-current={
+                                    item.current ? 'page' : undefined
+                                  }
+                                >
+                                  <item.icon
+                                    className={classNames(
+                                      item.current
+                                        ? 'text-gray-500'
+                                        : 'text-gray-400 group-hover:text-gray-500',
+                                      'mr-4 h-6 w-6'
+                                    )}
+                                    aria-hidden="true"
+                                  />
+                                  {item.name}
+                                </a>
+                              </Link>
+                            );
+                          })}
                         </div>
                       </>
                     ))}
                   </nav>
                 </div>
                 <div className="flex flex-shrink-0 border-t border-gray-200 bg-gray-50 p-4">
-                  <a href="#" className="group block w-full flex-shrink-0">
-                    <div className="flex items-center">
-                      <div>
-                        <RectangleStackIcon className="w-8 h-8" />
+                  <Link href="/projects">
+                    <a className="group block w-full flex-shrink-0">
+                      <div className="flex items-center">
+                        <div>
+                          <RectangleStackIcon className="w-8 h-8" />
+                        </div>
+                        <div className="ml-3">
+                          <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                            Project #1
+                          </p>
+                          <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
+                            View profile
+                          </p>
+                        </div>
                       </div>
-                      <div className="ml-3">
-                        <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                          Project #1
-                        </p>
-                        <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
-                          View profile
-                        </p>
-                      </div>
-                    </div>
-                  </a>
+                    </a>
+                  </Link>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
@@ -219,28 +252,29 @@ export function Sidebar(props: SidebarProps) {
                     )}
                     <div className="space-y-1 px-2">
                       {group.items.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            item.current
-                              ? 'bg-gray-200 text-gray-900'
-                              : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                            'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
-                          )}
-                          aria-current={item.current ? 'page' : undefined}
-                        >
-                          <item.icon
+                        <Link href={item.href}>
+                          <a
+                            key={item.name}
                             className={classNames(
                               item.current
-                                ? 'text-gray-500'
-                                : 'text-gray-400 group-hover:text-gray-500',
-                              'mr-4 h-6 w-6'
+                                ? 'bg-gray-200 text-gray-900'
+                                : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                              'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
                             )}
-                            aria-hidden="true"
-                          />
-                          {item.name}
-                        </a>
+                            aria-current={item.current ? 'page' : undefined}
+                          >
+                            <item.icon
+                              className={classNames(
+                                item.current
+                                  ? 'text-gray-500'
+                                  : 'text-gray-400 group-hover:text-gray-500',
+                                'mr-4 h-6 w-6'
+                              )}
+                              aria-hidden="true"
+                            />
+                            {item.name}
+                          </a>
+                        </Link>
                       ))}
                     </div>
                   </>
@@ -248,21 +282,23 @@ export function Sidebar(props: SidebarProps) {
               </nav>
             </div>
             <div className="flex flex-shrink-0 border-t border-gray-200 bg-gray-50 p-4">
-              <a href="#" className="group block w-full flex-shrink-0">
-                <div className="flex items-center">
-                  <div>
-                    <RectangleStackIcon className="w-8 h-8" />
+              <Link href="/projects">
+                <a className="group block w-full flex-shrink-0">
+                  <div className="flex items-center">
+                    <div>
+                      <RectangleStackIcon className="w-8 h-8" />
+                    </div>
+                    <div className="ml-3">
+                      <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                        Project #1
+                      </p>
+                      <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
+                        View profile
+                      </p>
+                    </div>
                   </div>
-                  <div className="ml-3">
-                    <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                      Project #1
-                    </p>
-                    <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
-                      View profile
-                    </p>
-                  </div>
-                </div>
-              </a>
+                </a>
+              </Link>
             </div>
           </div>
         </div>

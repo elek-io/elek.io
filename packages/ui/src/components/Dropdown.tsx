@@ -24,13 +24,13 @@ export type DropdownItem = {
 };
 
 export type DropdownItemGroup = {
-  name?: '';
+  name?: string;
   items: DropdownItem[];
 };
 
 export const itemGroupsExample: DropdownItemGroup[] = [
   {
-    name: '',
+    name: 'a',
     items: [
       {
         name: 'Edit',
@@ -45,7 +45,7 @@ export const itemGroupsExample: DropdownItemGroup[] = [
     ],
   },
   {
-    name: '',
+    name: 'b',
     items: [
       {
         name: 'Archive',
@@ -60,7 +60,7 @@ export const itemGroupsExample: DropdownItemGroup[] = [
     ],
   },
   {
-    name: '',
+    name: 'c',
     items: [
       {
         name: 'Share',
@@ -75,7 +75,7 @@ export const itemGroupsExample: DropdownItemGroup[] = [
     ],
   },
   {
-    name: '',
+    name: 'd',
     items: [
       {
         name: 'Delete',
@@ -121,7 +121,7 @@ export function Dropdown(props: DropdownProps) {
           {props.itemGroups.map((itemGroup) => {
             return (
               <>
-                <div className="py-1">
+                <div className="py-1" key={itemGroup.name}>
                   {itemGroup.items.map((item) => {
                     return (
                       <Menu.Item key={item.name}>

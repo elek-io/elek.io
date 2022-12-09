@@ -16,6 +16,7 @@ const styles = cva('', {
 export interface PageProps extends VariantProps<typeof styles> {
   title: string;
   children: ReactNode;
+  aside?: ReactNode;
 }
 
 export function Page(props: PageProps) {
@@ -28,9 +29,13 @@ export function Page(props: PageProps) {
         {props.children}
       </main>
 
-      <aside className="hidden w-96 overflow-y-auto border-l border-gray-200 bg-white lg:block">
-        <span>Aside content</span>
-      </aside>
+      {props.aside ? (
+        <aside className="hidden w-96 overflow-y-auto border-l border-gray-200 bg-white lg:block">
+          {props.aside}
+        </aside>
+      ) : (
+        ''
+      )}
     </>
   );
 }

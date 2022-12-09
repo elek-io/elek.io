@@ -1,9 +1,8 @@
 import { cva, VariantProps } from 'class-variance-authority';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { navigationExample, Sidebar } from '../components/Sidebar';
 import { Header, userNavigationExample } from '../components/Header';
-import { Page } from '../components/Page';
-import { Notification, NotificationProps } from '../components/Notification';
+import { NotificationProps } from '../components/Notification';
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
 import { NotificationContainer } from '../components/NotificationContainer';
 
@@ -19,9 +18,11 @@ const styles = cva('', {
   },
 });
 
-export interface BaseLayoutProps extends VariantProps<typeof styles> {}
+export interface BaseLayoutProps extends VariantProps<typeof styles> {
+  children: ReactNode;
+}
 
-export function BaseLayout({}: BaseLayoutProps) {
+export function BaseLayout(props: BaseLayoutProps) {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [notifications, setNotifications] = useState<NotificationProps[]>([
     {
@@ -41,7 +42,7 @@ export function BaseLayout({}: BaseLayoutProps) {
 
       <div className="flex flex-1 flex-col overflow-hidden lg:flex-col-reverse">
         <div className="flex flex-1 items-stretch overflow-hidden">
-          <Page title="Page title">Page content</Page>
+          {props.children}
         </div>
 
         <Header
