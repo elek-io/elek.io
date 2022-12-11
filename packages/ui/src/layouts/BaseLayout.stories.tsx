@@ -2,16 +2,19 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { BaseLayout } from './BaseLayout';
+import { sidebarNavigationExample } from '../components/Sidebar';
+import { userNavigationExample } from '../components/Header';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Layouts/Base',
   component: BaseLayout,
   argTypes: {
-    intent: { control: 'radio' },
-    fullWidth: { control: 'boolean', defaultValue: false },
-    state: {
-      defaultValue: null,
+    sidebarNavigation: {
+      defaultValue: sidebarNavigationExample,
+    },
+    userNavigation: {
+      defaultValue: userNavigationExample,
     },
   },
 } as ComponentMeta<typeof BaseLayout>;

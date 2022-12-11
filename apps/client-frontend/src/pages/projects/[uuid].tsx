@@ -6,7 +6,11 @@ const Project: NextPage = () => {
   const router = useRouter();
   const { uuid } = router.query;
 
-  return <Page title={`Project XYZ (${uuid})`}>A single Project</Page>;
+  return (
+    <Page title={`Project XYZ (${uuid})`}>
+      <div>{router.asPath}</div>A single Project
+    </Page>
+  );
 };
 
 export default Project;

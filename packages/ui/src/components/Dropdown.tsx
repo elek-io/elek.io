@@ -24,58 +24,53 @@ export type DropdownItem = {
 };
 
 export type DropdownItemGroup = {
-  name?: string;
   items: DropdownItem[];
 };
 
-export const itemGroupsExample: DropdownItemGroup[] = [
+export const dropdownItemGroupsExample: DropdownItemGroup[] = [
   {
-    name: 'a',
     items: [
       {
         name: 'Edit',
-        href: '#',
+        href: '#edit',
         icon: PencilSquareIcon,
       },
       {
         name: 'Duplicate',
-        href: '#',
+        href: '#duplicate',
         icon: DocumentDuplicateIcon,
       },
     ],
   },
   {
-    name: 'b',
     items: [
       {
         name: 'Archive',
-        href: '#',
+        href: '#archive',
         icon: ArchiveBoxIcon,
       },
       {
         name: 'Move',
-        href: '#',
+        href: '#move',
         icon: ArrowRightCircleIcon,
       },
     ],
   },
   {
-    name: 'c',
     items: [
       {
         name: 'Share',
-        href: '#',
+        href: '#share',
         icon: UserPlusIcon,
       },
       {
         name: 'Add to favorites',
-        href: '#',
+        href: '#favorites',
         icon: HeartIcon,
       },
     ],
   },
   {
-    name: 'd',
     items: [
       {
         name: 'Delete',
@@ -99,7 +94,7 @@ export function Dropdown(props: DropdownProps) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button>{props.children}</Menu.Button>
+        <Menu.Button as="div">{props.children}</Menu.Button>
       </div>
 
       <Transition
@@ -112,51 +107,43 @@ export function Dropdown(props: DropdownProps) {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="px-4 py-3">
-            <p className="text-sm">Signed in as</p>
-            <p className="truncate text-sm font-medium text-gray-900">
-              tom@example.com
-            </p>
-          </div>
-          {props.itemGroups.map((itemGroup) => {
+          {props.itemGroups.map((itemGroup, groupIndex) => {
             return (
-              <>
-                <div className="py-1" key={itemGroup.name}>
-                  {itemGroup.items.map((item) => {
-                    return (
-                      <Menu.Item key={item.name}>
-                        {({ active }) => (
-                          <a
-                            href={item.href}
-                            className={classNames(
-                              active
-                                ? 'bg-gray-100 text-gray-900'
-                                : 'text-gray-700',
-                              'group flex items-center px-4 py-2 text-sm'
-                            )}
-                          >
-                            {item.icon ? (
-                              <item.icon
-                                className={classNames(
-                                  active
-                                    ? 'text-gray-500'
-                                    : 'text-gray-400 group-hover:text-gray-500',
-                                  'mr-4 h-6 w-6'
-                                )}
-                                aria-hidden="true"
-                              />
-                            ) : (
-                              ''
-                            )}
+              <div className="py-1" key={groupIndex}>
+                {itemGroup.items.map((item) => {
+                  return (
+                    <Menu.Item key={item.href} as={Fragment}>
+                      {({ active }) => (
+                        <a
+                          href={item.href}
+                          className={classNames(
+                            active
+                              ? 'bg-gray-100 text-gray-900'
+                              : 'text-gray-700',
+                            'group flex items-center px-4 py-2 text-sm'
+                          )}
+                        >
+                          {item.icon ? (
+                            <item.icon
+                              className={classNames(
+                                active
+                                  ? 'text-gray-500'
+                                  : 'text-gray-400 group-hover:text-gray-500',
+                                'mr-4 h-6 w-6'
+                              )}
+                              aria-hidden="true"
+                            />
+                          ) : (
+                            ''
+                          )}
 
-                            {item.name}
-                          </a>
-                        )}
-                      </Menu.Item>
-                    );
-                  })}
-                </div>
-              </>
+                          {item.name}
+                        </a>
+                      )}
+                    </Menu.Item>
+                  );
+                })}
+              </div>
             );
           })}
         </Menu.Items>

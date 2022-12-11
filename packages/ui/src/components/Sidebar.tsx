@@ -39,43 +39,43 @@ export type SidebarNavigationItemGroup = {
   items: SidebarNavigationItem[];
 };
 
-export const navigationExample: SidebarNavigationItemGroup[] = [
+export const sidebarNavigationExample: SidebarNavigationItemGroup[] = [
   {
     name: 'sidebar',
     items: [
       {
         name: 'Dashboard',
-        href: '/',
+        href: '/dashboard',
         icon: HomeIcon,
         current: false,
       },
       {
         name: 'Calendar',
-        href: '/',
+        href: '/calendar',
         icon: CalendarIcon,
         current: false,
       },
       {
         name: 'Teams',
-        href: '/',
+        href: '/teams',
         icon: UserGroupIcon,
         current: false,
       },
       {
         name: 'Directory',
-        href: '/',
+        href: '/directory',
         icon: MagnifyingGlassCircleIcon,
         current: true,
       },
       {
         name: 'Announcements',
-        href: '/',
+        href: '/announcements',
         icon: MegaphoneIcon,
         current: false,
       },
       {
         name: 'Office Map',
-        href: '/',
+        href: '/office-map',
         icon: MapIcon,
         current: false,
       },
@@ -92,6 +92,76 @@ export interface SidebarProps extends VariantProps<typeof styles> {
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
+
+function sidebarNavigationItems(navigation: SidebarNavigationItemGroup[]) {
+  return navigation.map((group, groupIndex) => (
+    <Fragment key={groupIndex}>
+      {groupIndex !== 0 ? (
+        <hr className="my-5 border-t border-gray-200" aria-hidden="true" />
+      ) : (
+        ''
+      )}
+      <div className="space-y-1 px-2">
+        {group.items.map((item) => (
+          <Link key={item.href} href={item.href}>
+            <a
+              className={classNames(
+                item.current
+                  ? 'bg-gray-200 text-gray-900'
+                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
+              )}
+              aria-current={item.current ? 'page' : undefined}
+            >
+              <item.icon
+                className={classNames(
+                  item.current
+                    ? 'text-gray-500'
+                    : 'text-gray-400 group-hover:text-gray-500',
+                  'mr-4 h-6 w-6'
+                )}
+                aria-hidden="true"
+              />
+              {item.name}
+            </a>
+          </Link>
+        ))}
+      </div>
+    </Fragment>
+  ));
+}
+
+const sidebarNavigationContent = (navigation: SidebarNavigationItemGroup[]) => (
+  <>
+    <div className="flex flex-shrink-0 flex-col px-4 pt-5 pb-4">
+      <span className="text-xl text-brand-600 d-block">elek.io</span>
+    </div>
+    <div className="flex flex-1 flex-col overflow-y-auto pb-4">
+      <nav className="flex-1" aria-label="Sidebar">
+        {sidebarNavigationItems(navigation)}
+      </nav>
+    </div>
+    <div className="flex flex-shrink-0 border-t border-gray-200 bg-gray-50 p-4">
+      <Link href="/projects">
+        <a className="group block w-full flex-shrink-0">
+          <div className="flex items-center">
+            <div>
+              <RectangleStackIcon className="w-8 h-8" />
+            </div>
+            <div className="ml-3">
+              <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                Project #1
+              </p>
+              <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
+                View profile
+              </p>
+            </div>
+          </div>
+        </a>
+      </Link>
+    </div>
+  </>
+);
 
 export function Sidebar(props: SidebarProps) {
   return (
@@ -149,76 +219,7 @@ export function Sidebar(props: SidebarProps) {
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
-                  <div className="flex flex-shrink-0 items-center px-4">
-                    elek.io
-                  </div>
-                  <nav aria-label="Sidebar" className="mt-5">
-                    {props.navigation.map((group, groupIndex) => (
-                      <>
-                        {groupIndex !== 0 ? (
-                          <hr
-                            className="my-5 border-t border-gray-200"
-                            aria-hidden="true"
-                          />
-                        ) : (
-                          ''
-                        )}
-
-                        <div className="space-y-1 px-2" key={group.name}>
-                          {group.items.map((item) => {
-                            return (
-                              <Link href={item.href}>
-                                <a
-                                  key={item.name}
-                                  className={classNames(
-                                    item.current
-                                      ? 'bg-gray-200 text-gray-900'
-                                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
-                                  )}
-                                  aria-current={
-                                    item.current ? 'page' : undefined
-                                  }
-                                >
-                                  <item.icon
-                                    className={classNames(
-                                      item.current
-                                        ? 'text-gray-500'
-                                        : 'text-gray-400 group-hover:text-gray-500',
-                                      'mr-4 h-6 w-6'
-                                    )}
-                                    aria-hidden="true"
-                                  />
-                                  {item.name}
-                                </a>
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      </>
-                    ))}
-                  </nav>
-                </div>
-                <div className="flex flex-shrink-0 border-t border-gray-200 bg-gray-50 p-4">
-                  <Link href="/projects">
-                    <a className="group block w-full flex-shrink-0">
-                      <div className="flex items-center">
-                        <div>
-                          <RectangleStackIcon className="w-8 h-8" />
-                        </div>
-                        <div className="ml-3">
-                          <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                            Project #1
-                          </p>
-                          <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
-                            View profile
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </Link>
-                </div>
+                {sidebarNavigationContent(props.navigation)}
               </Dialog.Panel>
             </Transition.Child>
             <div className="w-14 flex-shrink-0" aria-hidden="true">
@@ -231,75 +232,8 @@ export function Sidebar(props: SidebarProps) {
       {/* Static sidebar for desktop */}
       <div className="hidden lg:flex lg:flex-shrink-0">
         <div className="flex w-64 flex-col">
-          {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white">
-            <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
-              <div className="flex flex-shrink-0 flex-col px-4">
-                <span className="text-xl font-bold text-brand-600 d-block">
-                  elek.io
-                </span>
-              </div>
-              <nav className="mt-5 flex-1" aria-label="Sidebar">
-                {props.navigation.map((group, groupIndex) => (
-                  <>
-                    {groupIndex !== 0 ? (
-                      <hr
-                        className="my-5 border-t border-gray-200"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      ''
-                    )}
-                    <div className="space-y-1 px-2">
-                      {group.items.map((item) => (
-                        <Link href={item.href}>
-                          <a
-                            key={item.name}
-                            className={classNames(
-                              item.current
-                                ? 'bg-gray-200 text-gray-900'
-                                : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                              'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
-                            )}
-                            aria-current={item.current ? 'page' : undefined}
-                          >
-                            <item.icon
-                              className={classNames(
-                                item.current
-                                  ? 'text-gray-500'
-                                  : 'text-gray-400 group-hover:text-gray-500',
-                                'mr-4 h-6 w-6'
-                              )}
-                              aria-hidden="true"
-                            />
-                            {item.name}
-                          </a>
-                        </Link>
-                      ))}
-                    </div>
-                  </>
-                ))}
-              </nav>
-            </div>
-            <div className="flex flex-shrink-0 border-t border-gray-200 bg-gray-50 p-4">
-              <Link href="/projects">
-                <a className="group block w-full flex-shrink-0">
-                  <div className="flex items-center">
-                    <div>
-                      <RectangleStackIcon className="w-8 h-8" />
-                    </div>
-                    <div className="ml-3">
-                      <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                        Project #1
-                      </p>
-                      <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
-                        View profile
-                      </p>
-                    </div>
-                  </div>
-                </a>
-              </Link>
-            </div>
+            {sidebarNavigationContent(props.navigation)}
           </div>
         </div>
       </div>

@@ -1,7 +1,15 @@
 import { cva, VariantProps } from 'class-variance-authority';
 import { ReactNode, useState } from 'react';
-import { navigationExample, Sidebar } from '../components/Sidebar';
-import { Header, userNavigationExample } from '../components/Header';
+import {
+  sidebarNavigationExample,
+  Sidebar,
+  SidebarNavigationItemGroup,
+} from '../components/Sidebar';
+import {
+  Header,
+  userNavigationExample,
+  UserNavigationItemGroup,
+} from '../components/Header';
 import { NotificationProps } from '../components/Notification';
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
 import { NotificationContainer } from '../components/NotificationContainer';
@@ -20,6 +28,8 @@ const styles = cva('', {
 
 export interface BaseLayoutProps extends VariantProps<typeof styles> {
   children: ReactNode;
+  sidebarNavigation: SidebarNavigationItemGroup[];
+  userNavigation: UserNavigationItemGroup[];
 }
 
 export function BaseLayout(props: BaseLayoutProps) {
@@ -37,7 +47,7 @@ export function BaseLayout(props: BaseLayoutProps) {
       <Sidebar
         isOpen={isSidebarOpen}
         setOpen={setSidebarOpen}
-        navigation={navigationExample}
+        navigation={props.sidebarNavigation}
       ></Sidebar>
 
       <div className="flex flex-1 flex-col overflow-hidden lg:flex-col-reverse">
@@ -47,7 +57,7 @@ export function BaseLayout(props: BaseLayoutProps) {
 
         <Header
           setSidebarOpen={setSidebarOpen}
-          userNavigation={userNavigationExample}
+          userNavigation={props.userNavigation}
         ></Header>
       </div>
 
