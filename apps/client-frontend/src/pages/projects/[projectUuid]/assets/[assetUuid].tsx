@@ -4,9 +4,9 @@ import { Page } from 'ui';
 
 const Asset: NextPage = () => {
   const router = useRouter();
-  const { uuid } = router.query;
+  const { assetUuid } = router.query;
 
-  return <Page title={`Asset XYZ (${uuid})`}>A single Asset</Page>;
+  return <Page title={`Asset XYZ (${assetUuid})`}>A single Asset</Page>;
 };
 
 export default Asset;

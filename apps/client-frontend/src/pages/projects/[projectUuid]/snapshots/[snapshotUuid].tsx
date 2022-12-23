@@ -4,9 +4,11 @@ import { Page } from 'ui';
 
 const Snapshot: NextPage = () => {
   const router = useRouter();
-  const { uuid } = router.query;
+  const { snapshotUuid } = router.query;
 
-  return <Page title={`Snapshot XYZ (${uuid})`}>A single Snapshot</Page>;
+  return (
+    <Page title={`Snapshot XYZ (${snapshotUuid})`}>A single Snapshot</Page>
+  );
 };
 
 export default Snapshot;

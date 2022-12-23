@@ -8,47 +8,61 @@ import {
   MegaphoneIcon,
 } from '@heroicons/react/20/solid';
 import { BaseLayout } from 'ui';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import Project from 'core/dist/esm/model/Project';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [currentProject, setCurrentProject] = useState<Project>();
+  const router = useRouter();
+  const { projectUuid } = router.query;
+
+  useEffect(() => {
+    if (projectUuid && typeof projectUuid === 'string') {
+      window.ipc.core.projects
+        .read(projectUuid)
+        .then((project) => {
+          setCurrentProject(project);
+          console.log('Got current Project: ', project);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, []);
+
   const sidebarNavigation = [
     {
-      name: 'sidebar',
       items: [
         {
           name: 'Dashboard',
-          href: '/',
+          href: `/projects/${projectUuid}`,
           icon: HomeIcon,
-          current: false,
         },
         {
-          name: 'Calendar',
-          href: '/',
+          name: 'Assets',
+          href: `/projects/${projectUuid}/assets`,
           icon: CalendarIcon,
-          current: false,
         },
         {
-          name: 'Teams',
-          href: '/',
-          icon: UserGroupIcon,
-          current: false,
+          name: 'Snapshots',
+          href: `/projects/${projectUuid}/snapshots`,
+          icon: CalendarIcon,
         },
         {
-          name: 'Directory',
-          href: '/',
-          icon: MagnifyingGlassCircleIcon,
-          current: true,
+          name: 'Theme',
+          href: `/projects/${projectUuid}/theme`,
+          icon: CalendarIcon,
         },
         {
-          name: 'Announcements',
-          href: '/',
-          icon: MegaphoneIcon,
-          current: false,
+          name: 'Logs',
+          href: `/projects/${projectUuid}/logs`,
+          icon: CalendarIcon,
         },
         {
-          name: 'Office Map',
-          href: '/',
-          icon: MapIcon,
-          current: false,
+          name: 'Settings',
+          href: `/projects/${projectUuid}/settings`,
+          icon: CalendarIcon,
         },
       ],
     },
@@ -80,10 +94,15 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <BaseLayout
+      router={router}
       sidebarNavigation={sidebarNavigation}
       userNavigation={userNavigation}
     >
-      <Component {...pageProps} />
+      <Component
+        {...pageProps}
+        currentProject={currentProject}
+        setCurrentProject={setCurrentProject}
+      />
     </BaseLayout>
   );
 }

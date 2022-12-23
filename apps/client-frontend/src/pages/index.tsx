@@ -1,7 +1,5 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import { Button, Page } from 'ui';
+import { Page } from 'ui';
 
 const Home: NextPage = () => {
   const getCount = async () => {
