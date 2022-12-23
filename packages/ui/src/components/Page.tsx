@@ -23,10 +23,12 @@ export function Page(props: PageProps) {
   return (
     <>
       <main className="flex-1 overflow-y-auto">
-        <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-          {props.title}
-        </h1>
-        {props.children}
+        <div className="container mx-auto px-4">
+          <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+            {props.title}
+          </h1>
+          {props.children}
+        </div>
       </main>
 
       {props.aside ? (
