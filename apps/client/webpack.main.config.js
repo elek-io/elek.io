@@ -11,4 +11,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.json'],
   },
+  node: {
+    __dirname: true, // @see https://github.com/desktop/dugite/issues/96#issuecomment-504244621
+  },
 };
