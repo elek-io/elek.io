@@ -46,17 +46,17 @@ export const sidebarNavigationExample: SidebarNavigationItemGroup[] = [
       {
         name: 'Dashboard',
         href: '/dashboard',
-        icon: HomeIcon
+        icon: HomeIcon,
       },
       {
         name: 'Calendar',
         href: '/calendar',
-        icon: CalendarIcon
+        icon: CalendarIcon,
       },
       {
         name: 'Teams',
         href: '/teams',
-        icon: UserGroupIcon
+        icon: UserGroupIcon,
       },
       {
         name: 'Directory',
@@ -66,12 +66,12 @@ export const sidebarNavigationExample: SidebarNavigationItemGroup[] = [
       {
         name: 'Announcements',
         href: '/announcements',
-        icon: MegaphoneIcon
+        icon: MegaphoneIcon,
       },
       {
         name: 'Office Map',
         href: '/office-map',
-        icon: MapIcon
+        icon: MapIcon,
       },
     ],
   },

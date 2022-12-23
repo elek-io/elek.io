@@ -29,7 +29,10 @@ export function NotificationContainer(props: NotificationContainerProps) {
     >
       <div className="flex w-full flex-col items-center space-y-4 sm:items-end">
         {props.notifications.map((notification) => (
-          <Notification {...notification}></Notification>
+          <Notification
+            {...notification}
+            key={notification.title}
+          ></Notification>
         ))}
       </div>
     </div>
