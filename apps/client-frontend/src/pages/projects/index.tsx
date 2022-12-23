@@ -60,29 +60,27 @@ const Projects: NextPage = () => {
         </li>
         {projects.list.map((project: Project) => (
           <Link href={`/projects/${project.id}`} key={project.id}>
-            <li className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
-              <div className="flex flex-1 flex-col p-8">
-                <h2 className="mt-6 text-sm font-medium text-gray-900">
-                  {project.name}
+            <li className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white shadow">
+              <div className="flex flex-1 flex-col p-4">
+                <h2 className="text-lg font-medium leading-6 text-gray-900">
+                  {project.name} ({project.status})
                 </h2>
-                <dl className="mt-1 flex flex-grow flex-col justify-between">
-                  <dt className="sr-only">Title</dt>
-                  <dd className="text-sm text-gray-500">{project.name}</dd>
-                  <dt className="sr-only">Role</dt>
-                  <dd className="mt-3">
-                    <span className="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800">
-                      {project.version}
-                    </span>
-                  </dd>
-                </dl>
+                <p className="text-sm text-gray-500">{project.description}</p>
+                <span className="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800">
+                  {project.version}
+                </span>
+                <p className="mt-2 text-sm text-gray-500">
+                  Created: {project.created}
+                  <br></br>Updated: {project.updated}
+                </p>
               </div>
-              <div>
+              {/* <div>
                 <div className="-mt-px flex divide-x divide-gray-200">
                   <div className="flex w-0 flex-1">
                     {JSON.stringify(project, undefined, 2)}
                   </div>
                 </div>
-              </div>
+              </div> */}
             </li>
           </Link>
         ))}
