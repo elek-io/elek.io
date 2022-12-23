@@ -43,11 +43,8 @@ const Projects: NextPage = () => {
           </li>
         </Link>
         {projects.list.map((project: Project) => (
-          <Link href={`/projects/${project.id}`}>
-            <li
-              key={project.id}
-              className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
-            >
+          <Link href={`/projects/${project.id}`} key={project.id}>
+            <li className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
               <div className="flex flex-1 flex-col p-8">
                 <h3 className="mt-6 text-sm font-medium text-gray-900">
                   {project.name}
