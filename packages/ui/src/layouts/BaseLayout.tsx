@@ -13,6 +13,7 @@ import {
 import { NotificationProps } from '../components/Notification';
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
 import { NotificationContainer } from '../components/NotificationContainer';
+import { NextRouter } from 'next/router';
 
 const styles = cva('', {
   variants: {
@@ -28,6 +29,7 @@ const styles = cva('', {
 
 export interface BaseLayoutProps extends VariantProps<typeof styles> {
   children: ReactNode;
+  router: NextRouter;
   sidebarNavigation: SidebarNavigationItemGroup[];
   userNavigation: UserNavigationItemGroup[];
 }
@@ -45,6 +47,7 @@ export function BaseLayout(props: BaseLayoutProps) {
   return (
     <div className="flex h-full w-full">
       <Sidebar
+        router={props.router}
         isOpen={isSidebarOpen}
         setOpen={setSidebarOpen}
         navigation={props.sidebarNavigation}
