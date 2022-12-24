@@ -1,4 +1,7 @@
-module.exports = {
+import { WebpackConfiguration } from '@electron-forge/plugin-webpack/dist/Config';
+import { rules } from './webpack.rules';
+
+export const mainConfig: WebpackConfiguration = {
   /**
    * This is the main entry point for your application, it's the first file
    * that runs in the main process.
@@ -6,7 +9,7 @@ module.exports = {
   entry: './src/main/index.ts',
   // Put your normal webpack config below here
   module: {
-    rules: require('./webpack.rules'),
+    rules,
   },
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.json'],
