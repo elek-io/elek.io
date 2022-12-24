@@ -106,7 +106,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <BaseLayout
-      router={router}
+      currentPath={router.asPath}
       sidebarNavigation={sidebarNavigation}
       sidebarDisabledOnPaths={sidebarDisabledOnPaths}
       userNavigation={userNavigation}
