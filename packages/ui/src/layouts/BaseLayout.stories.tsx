@@ -4,17 +4,29 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { BaseLayout } from './BaseLayout';
 import { sidebarNavigationExample } from '../components/Sidebar';
 import { userNavigationExample } from '../components/Header';
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Layouts/Base',
   component: BaseLayout,
   argTypes: {
+    currentPath: { defaultValue: '/' },
+    sidebarDisabledOnPaths: { defaultValue: [] },
     sidebarNavigation: {
       defaultValue: sidebarNavigationExample,
     },
     userNavigation: {
       defaultValue: userNavigationExample,
+    },
+    notifications: {
+      defaultValue: [
+        {
+          icon: CheckCircleIcon,
+          title: 'Created Page',
+          description: 'Successfully created a new page',
+        },
+      ],
     },
   },
 } as ComponentMeta<typeof BaseLayout>;

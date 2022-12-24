@@ -7,7 +7,9 @@ export default {
   title: 'Components/Header',
   component: Header,
   argTypes: {
+    currentPath: { defaultValue: '/' },
     isOpen: { control: 'boolean', defaultValue: false },
+    sidebarDisabledOnPaths: { defaultValue: [] },
   },
 } as ComponentMeta<typeof Header>;
 

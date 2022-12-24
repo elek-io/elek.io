@@ -4,7 +4,7 @@ import {
   ChevronDownIcon,
   EllipsisVerticalIcon,
 } from '@heroicons/react/20/solid';
-import { Dropdown, itemGroupsExample } from './Dropdown';
+import { Dropdown, dropdownItemGroupsExample } from './Dropdown';
 import { Button } from './Button';
 import { Avatar } from './Avatar';
 
@@ -17,19 +17,19 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const TemplateWithButton: ComponentStory<typeof Dropdown> = (args) => (
-  <Dropdown {...args} itemGroups={itemGroupsExample}>
+  <Dropdown {...args} itemGroups={dropdownItemGroupsExample}>
     <Button appendIcon={ChevronDownIcon}>Dropdown</Button>
   </Dropdown>
 );
 const TemplateWithAvatar: ComponentStory<typeof Dropdown> = (args) => (
-  <Dropdown {...args} itemGroups={itemGroupsExample}>
+  <Dropdown {...args} itemGroups={dropdownItemGroupsExample}>
     <Button intent="avatar">
       <Avatar name="John Doe"></Avatar>
     </Button>
   </Dropdown>
 );
 const TemplateWithIcon: ComponentStory<typeof Dropdown> = (args) => (
-  <Dropdown {...args} itemGroups={itemGroupsExample}>
+  <Dropdown {...args} itemGroups={dropdownItemGroupsExample}>
     <Button intent="icon">
       <EllipsisVerticalIcon className="h-5 w-5"></EllipsisVerticalIcon>
     </Button>

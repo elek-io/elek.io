@@ -14,7 +14,6 @@ import {
   MapIcon,
   MegaphoneIcon,
 } from '@heroicons/react/20/solid';
-import { NextRouter } from 'next/router';
 
 const styles = cva('', {
   variants: {
@@ -78,7 +77,7 @@ export const sidebarNavigationExample: SidebarNavigationItemGroup[] = [
 ];
 
 export interface SidebarProps extends VariantProps<typeof styles> {
-  router: NextRouter;
+  currentPath: string;
   isOpen: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   disabledOnPaths: string[];
@@ -89,12 +88,12 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-function isCurrentRoute(router: NextRouter, href: string) {
-  return href === router.asPath;
+function isCurrentRoute(currentPath: string, href: string) {
+  return href === currentPath;
 }
 
 function sidebarNavigationItems(
-  router: NextRouter,
+  currentPath: string,
   navigation: SidebarNavigationItemGroup[]
 ) {
   return navigation.map((group, groupIndex) => (
@@ -109,18 +108,18 @@ function sidebarNavigationItems(
           <Link key={item.href} href={item.href}>
             <a
               className={classNames(
-                isCurrentRoute(router, item.href)
+                isCurrentRoute(currentPath, item.href)
                   ? 'bg-gray-200 text-gray-900'
                   : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
                 'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
               )}
               aria-current={
-                isCurrentRoute(router, item.href) ? 'page' : undefined
+                isCurrentRoute(currentPath, item.href) ? 'page' : undefined
               }
             >
               <item.icon
                 className={classNames(
-                  isCurrentRoute(router, item.href)
+                  isCurrentRoute(currentPath, item.href)
                     ? 'text-gray-500'
                     : 'text-gray-400 group-hover:text-gray-500',
                   'mr-4 h-6 w-6'
@@ -137,7 +136,7 @@ function sidebarNavigationItems(
 }
 
 const sidebarNavigationContent = (
-  router: NextRouter,
+  currentPath: string,
   navigation: SidebarNavigationItemGroup[]
 ) => (
   <>
@@ -146,7 +145,7 @@ const sidebarNavigationContent = (
     </div>
     <div className="flex flex-1 flex-col overflow-y-auto pb-4">
       <nav className="flex-1" aria-label="Sidebar">
-        {sidebarNavigationItems(router, navigation)}
+        {sidebarNavigationItems(currentPath, navigation)}
       </nav>
     </div>
     <div className="flex flex-shrink-0 border-t border-gray-200 bg-gray-50 p-4">
@@ -228,7 +227,7 @@ export function Sidebar(props: SidebarProps) {
                     </button>
                   </div>
                 </Transition.Child>
-                {sidebarNavigationContent(props.router, props.navigation)}
+                {sidebarNavigationContent(props.currentPath, props.navigation)}
               </Dialog.Panel>
             </Transition.Child>
             <div className="w-14 flex-shrink-0" aria-hidden="true">
@@ -239,11 +238,11 @@ export function Sidebar(props: SidebarProps) {
       </Transition.Root>
 
       {/* Static sidebar for desktop */}
-      {!props.disabledOnPaths.includes(props.router.asPath) ? (
+      {!props.disabledOnPaths.includes(props.currentPath) ? (
         <div className="hidden lg:flex lg:flex-shrink-0">
           <div className="flex w-64 flex-col">
             <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white">
-              {sidebarNavigationContent(props.router, props.navigation)}
+              {sidebarNavigationContent(props.currentPath, props.navigation)}
             </div>
           </div>
         </div>
