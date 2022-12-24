@@ -6,7 +6,7 @@ import {
   HomeIcon,
   UserGroupIcon,
   XMarkIcon,
-  RectangleStackIcon,
+  FolderOpenIcon,
 } from '@heroicons/react/24/outline';
 import {
   CalendarIcon,
@@ -81,6 +81,7 @@ export interface SidebarProps extends VariantProps<typeof styles> {
   router: NextRouter;
   isOpen: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  disabledOnPaths: string[];
   navigation: SidebarNavigationItemGroup[];
 }
 
@@ -149,11 +150,12 @@ const sidebarNavigationContent = (
       </nav>
     </div>
     <div className="flex flex-shrink-0 border-t border-gray-200 bg-gray-50 p-4">
+      {/* @todo this should be added via props and not be static */}
       <Link href="/projects">
         <a className="group block w-full flex-shrink-0">
           <div className="flex items-center">
             <div>
-              <RectangleStackIcon className="w-8 h-8" />
+              <FolderOpenIcon className="w-8 h-8" />
             </div>
             <div className="ml-3">
               <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
@@ -237,13 +239,17 @@ export function Sidebar(props: SidebarProps) {
       </Transition.Root>
 
       {/* Static sidebar for desktop */}
-      <div className="hidden lg:flex lg:flex-shrink-0">
-        <div className="flex w-64 flex-col">
-          <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white">
-            {sidebarNavigationContent(props.router, props.navigation)}
+      {!props.disabledOnPaths.includes(props.router.asPath) ? (
+        <div className="hidden lg:flex lg:flex-shrink-0">
+          <div className="flex w-64 flex-col">
+            <div className="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white">
+              {sidebarNavigationContent(props.router, props.navigation)}
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        ''
+      )}
     </>
   );
 }

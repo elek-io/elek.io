@@ -13,6 +13,7 @@ import {
 import { Avatar } from './Avatar';
 import { Button } from './Button';
 import { Dropdown, dropdownItemGroupsExample } from './Dropdown';
+import { NextRouter } from 'next/router';
 
 const styles = cva('', {
   variants: {
@@ -58,7 +59,9 @@ export const userNavigationExample: UserNavigationItemGroup[] = [
 ];
 
 export interface HeaderProps extends VariantProps<typeof styles> {
+  router: NextRouter;
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  sidebarDisabledOnPaths: string[];
   userNavigation: UserNavigationItemGroup[];
 }
 
@@ -103,6 +106,7 @@ export function Header(props: HeaderProps) {
           type="button"
           className="border-l border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-500 lg:hidden"
           onClick={() => props.setSidebarOpen(true)}
+          disabled={props.sidebarDisabledOnPaths.includes(props.router.asPath)}
         >
           <span className="sr-only">Open sidebar</span>
           <Bars3BottomLeftIcon className="h-6 w-6" aria-hidden="true" />

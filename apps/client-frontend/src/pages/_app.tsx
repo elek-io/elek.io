@@ -1,21 +1,33 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { HomeIcon, UserGroupIcon } from '@heroicons/react/24/outline';
+import {
+  CheckCircleIcon,
+  HomeIcon,
+  UserGroupIcon,
+} from '@heroicons/react/24/outline';
 import {
   CalendarIcon,
   MagnifyingGlassCircleIcon,
   MapIcon,
   MegaphoneIcon,
 } from '@heroicons/react/20/solid';
-import { BaseLayout } from 'ui';
+import { BaseLayout, NotificationProps } from 'ui';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Project from 'core/dist/esm/model/Project';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [notifications, setNotifications] = useState<NotificationProps[]>([
+    {
+      icon: CheckCircleIcon,
+      title: 'Created Page',
+      description: 'Successfully created a new page',
+    },
+  ]);
   const [currentProject, setCurrentProject] = useState<Project>();
   const router = useRouter();
   const { projectUuid } = router.query;
+  const sidebarDisabledOnPaths = ['/projects'];
 
   useEffect(() => {
     if (projectUuid && typeof projectUuid === 'string') {
@@ -96,7 +108,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <BaseLayout
       router={router}
       sidebarNavigation={sidebarNavigation}
+      sidebarDisabledOnPaths={sidebarDisabledOnPaths}
       userNavigation={userNavigation}
+      notifications={notifications}
     >
       <Component
         {...pageProps}

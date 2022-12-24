@@ -31,18 +31,13 @@ export interface BaseLayoutProps extends VariantProps<typeof styles> {
   children: ReactNode;
   router: NextRouter;
   sidebarNavigation: SidebarNavigationItemGroup[];
+  sidebarDisabledOnPaths: string[];
   userNavigation: UserNavigationItemGroup[];
+  notifications: NotificationProps[];
 }
 
 export function BaseLayout(props: BaseLayoutProps) {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const [notifications, setNotifications] = useState<NotificationProps[]>([
-    {
-      icon: CheckCircleIcon,
-      title: 'Created Page',
-      description: 'Successfully created a new page',
-    },
-  ]);
 
   return (
     <div className="flex h-full w-full">
@@ -50,6 +45,7 @@ export function BaseLayout(props: BaseLayoutProps) {
         router={props.router}
         isOpen={isSidebarOpen}
         setOpen={setSidebarOpen}
+        disabledOnPaths={props.sidebarDisabledOnPaths}
         navigation={props.sidebarNavigation}
       ></Sidebar>
 
@@ -59,13 +55,15 @@ export function BaseLayout(props: BaseLayoutProps) {
         </div>
 
         <Header
+          router={props.router}
           setSidebarOpen={setSidebarOpen}
+          sidebarDisabledOnPaths={props.sidebarDisabledOnPaths}
           userNavigation={props.userNavigation}
         ></Header>
       </div>
 
       <NotificationContainer
-        notifications={notifications}
+        notifications={props.notifications}
       ></NotificationContainer>
     </div>
   );
