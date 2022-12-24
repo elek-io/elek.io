@@ -11,10 +11,14 @@
   "scripts": {
     "build": "pnpm run clean && tsc && tailwindcss -i ./src/styles.css -o ./dist/styles.css",
     "dev": "start-storybook -p 3003",
-    "clean": "rm -rf ./dist"
+    "clean": "rm -rf ./dist",
+    "build-storybook": "build-storybook",
+    "publish": "pnpm run chromatic",
+    "chromatic": "chromatic --exit-zero-on-changes --project-token=2db77d6b5d7e"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
+    "@storybook/addon-a11y": "^6.5.13",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",
@@ -23,10 +27,12 @@
     "@storybook/manager-webpack5": "^6.5.13",
     "@storybook/react": "^6.5.13",
     "@storybook/testing-library": "^0.0.13",
+    "@tailwindcss/forms": "^0.5.3",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "autoprefixer": "^10.4.12",
     "babel-loader": "^8.2.5",
+    "chromatic": "^6.11.4",
     "config": "workspace:*",
     "postcss": "^8.4.18",
     "postcss-loader": "^7.0.1",
@@ -38,6 +44,9 @@
   "dependencies": {
     "@headlessui/react": "^1.6.6",
     "@heroicons/react": "^2.0.10",
-    "class-variance-authority": "^0.2.4"
-  }
+    "class-variance-authority": "^0.2.4",
+    "next": "12"
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "ui@0.0.0"
 }

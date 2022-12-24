@@ -18,6 +18,10 @@ out/
 build
 dist
 
+# storybook
+storybook-static/
+build-storybook.log
+
 # apps
 apps/client/static/
 apps/client-frontend/cypress/screenshots/

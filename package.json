@@ -14,7 +14,8 @@
     "test": "turbo run test",
     "clean": "turbo run clean",
     "prepare": "husky install",
-    "publish": "turbo run publish"
+    "publish": "turbo run publish",
+    "publish:ui": "pnpm run publish --filter=ui"
   },
   "devDependencies": {
     "prettier": "^2.7.1",

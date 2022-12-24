@@ -40,6 +40,9 @@ jobs:
       - name: Run tests
         run: pnpm test
 
+      - name: Publish Storybook (Design System) to Chromatic
+        run: pnpm run publish:ui
+
   build:
     name: Build
     timeout-minutes: 15

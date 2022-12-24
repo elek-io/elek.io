@@ -3,6 +3,7 @@
   "display": "Electron",
   "extends": "./tsconfig-base.json",
   "compilerOptions": {
+    "target": "ES6",
     "allowJs": true,
     "module": "commonjs",
     "skipLibCheck": true,
